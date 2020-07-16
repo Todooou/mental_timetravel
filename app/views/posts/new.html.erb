@@ -1,0 +1,31 @@
+
+<%= form_with model: @post do |f|  %>
+  <div class="field">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, :size => 140 %>
+  </div>
+  <div class="field">
+    <%= f.label :day, "あの頃" %>
+    <%= f.date_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :address, "住所"%>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :body, "情景" %>
+    <%= f.text_field :body, :size => 140 %>
+  </div>
+  <div class="field">
+    <%= f.label :youtube, "思い出の曲(youtube_URL)" %>
+    <%= f.text_field :youtube %>
+  </div>
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+  </div>
+    <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧を表示", posts_path %>
+

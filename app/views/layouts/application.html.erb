@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timetravel</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div><%= link_to 'マイページ', mypage_path %></div>
+    <% if user_signed_in? %>
+      <div><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></div>
+    <% else %>
+      <div><%= link_to 'ログイン', new_user_session_path %></div>
+      <div><%= link_to 'アカウント作成', new_user_registration_path %></div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

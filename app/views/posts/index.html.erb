@@ -1,0 +1,8 @@
+<%= link_to "トップページ", root_path %>
+
+  <% @post.each do |t| %>
+    <br>
+    <%= link_to post_path(t.id) do %>
+      <%= t.day.strftime('%Y/%m/%d')%>
+    <% end%>
+  <% end %>
