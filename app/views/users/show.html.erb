@@ -1,18 +1,23 @@
-<h3><%= @user.username %></h3>
-
+<div class="user-title">
   <% if user_signed_in? && @user == current_user %>
     <h1>Mypage</h1>
   <% else %>
     <h1>Userpage</h1>
   <% end %>
-  <% if user_signed_in? && @user == current_user %>
-  <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "profile" %>
-  <% end %>
-  <%= image_tag @user.image_url if @user.image? %>
-  <% @post.each do |t| %><br>
-      <%= link_to post_path(t.id),class: "posts_day_link" do %>
-        <div class="posts_day">
-          <span class="posts_day_txt"><%= t.day.strftime('%Y/%m/%d') %></span>
-        </div>
-      <% end%>
-  <% end %>
+</div>
+<div class="user-edit">
+    <h3><%= @user.username %></h3>
+      <%= image_tag @user.image_url, class:"icon_image"%><br>
+      <% if user_signed_in? && @user == current_user %>
+      <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "profile" %>
+      <% end %>
+</div>
+<div class="user-post">    
+      <% @post.each do |t| %><br>
+          <%= link_to post_path(t.id),class: "posts_day_link" do %>
+            <div class="posts_day">
+              <span class="posts_day_txt"><%= t.day.strftime('%Y/%m/%d') %></span>
+            </div>
+          <% end%>
+      <% end %>
+</div>

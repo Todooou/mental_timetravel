@@ -1,0 +1,9 @@
+<h1>ユーザー一覧</h1>
+<% @user.each do |user| %>
+  <%= link_to do %>
+    <%= image_tag user.image_url, class: "icon_image" %>
+    <%= user.username %><br>
+  <% end %>
+<% end %>
+
+<%#= render "relationships/follow_button", user: @user %>

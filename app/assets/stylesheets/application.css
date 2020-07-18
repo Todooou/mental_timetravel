@@ -36,7 +36,7 @@ header a {
   display: flex;
   justify-content: space-between;/* 親要素に左右均等分布!!!! */
 }
-h1 {
+header h1 {
   margin-left: 30px;
   color: white;
   display: inline-block;
@@ -49,4 +49,13 @@ ul {
   font-size: 20px;
   line-height: 50px;
   list-style: none;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.content-wrapper {
+  width: 100%;
 }

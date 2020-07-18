@@ -15,11 +15,30 @@
 
 
 .icon_image {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   //サイズ指定
   border-radius: 100px;
   //画像を丸くする
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
+}
+
+h1 {
+  color: black;
+}
+
+.user-edit-wrapper {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.user-edit-content-wrapper {
+  border: solid 1px #000;
+  padding: 30px;
+}
+
+.content-wrapper {
+  width: 100%;
+  text-align: center;
 }

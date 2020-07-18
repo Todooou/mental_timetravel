@@ -4,7 +4,6 @@
     <title>Timetravel</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,6 +18,7 @@
           <ul>
               <li><%= link_to "Top", root_path %></li>
               <li><%= link_to 'Mypage', mypage_path %></li>
+              <li><%= link_to 'Search', users_path %>
             <% if user_signed_in? %>
               <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %>
             <% else %>
@@ -29,6 +29,10 @@
         </div>
       </div>
     </header>
-    <%= yield %>
+    <div class="wrapper">
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

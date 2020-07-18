@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post = current_user.posts.all.order(day: :desc)
   end
-
+  def index
+    @user= User.all
+  end
   def mypage
     redirect_to user_path(current_user)
   end
