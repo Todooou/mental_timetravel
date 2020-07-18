@@ -8,7 +8,7 @@
   <% if user_signed_in? && @user == current_user %>
   <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "profile" %>
   <% end %>
-  
+  <%= image_tag @user.image_url if @user.image? %>
   <% @post.each do |t| %><br>
       <%= link_to post_path(t.id),class: "posts_day_link" do %>
         <div class="posts_day">
