@@ -1,6 +1,6 @@
 <h1>ユーザー一覧</h1>
 <% @user.each do |user| %>
-  <%= link_to do %>
+  <%= link_to user_path(user.id) do %>
     <%= image_tag user.image_url, class: "icon_image" %>
     <%= user.username %><br>
   <% end %>
