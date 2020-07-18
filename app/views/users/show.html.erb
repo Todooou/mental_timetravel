@@ -1,22 +1,18 @@
-
-<%= link_to "トップへ戻る", root_path %><br>
-<% if user_signed_in? && @user == current_user %>
-<%= link_to "プロフィール編集",  edit_user_registration_path(current_user) %>
-<% end %>
-
-<% if user_signed_in? && @user == current_user %>
-  <h1>マイページ</h1>
-<% else %>
-  <h1>ユーザーページ</h1>
-<% end %>
 <h3><%= @user.username %></h3>
 
-
-
-
-  <% @post.each do |t| %>
-    <br>
-    <%= link_to post_path(t.id) do %>
-      <%= t.day.strftime('%Y/%m/%d')%>
-    <% end%>
+  <% if user_signed_in? && @user == current_user %>
+    <h1>Mypage</h1>
+  <% else %>
+    <h1>Userpage</h1>
+  <% end %>
+  <% if user_signed_in? && @user == current_user %>
+  <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "profile" %>
+  <% end %>
+  
+  <% @post.each do |t| %><br>
+      <%= link_to post_path(t.id),class: "posts_day_link" do %>
+        <div class="posts_day">
+          <span class="posts_day_txt"><%= t.day.strftime('%Y/%m/%d') %></span>
+        </div>
+      <% end%>
   <% end %>

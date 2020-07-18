@@ -1,31 +1,65 @@
-
-<%= form_with model: @post do |f|  %>
-  <div class="field">
-    <%= f.label :title, "タイトル" %>
-    <%= f.text_field :title, :size => 140 %>
+<div class= "wrapper">
+  <div class="form-wrapper">
+    <%= form_with model: @post do |f|  %>
+      <table class="access-table">
+        <tbody>
+          <tr>
+            <th class="table-left">
+              <%= f.label :title, "タイトル" %>
+            </th>
+            <th class="table-right title">
+              <%= f.text_field :title, :size => 140 %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <%= f.label :day, "あの頃" %>
+            </th>
+            <th class="table-right ">
+              <%= f.date_field :day %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <%= f.label :address, "住所"%>
+            </th>
+            <th class="table-right">
+              <%= f.text_field :address %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <%= f.label :body, "情景" %>
+            </th>
+            <th class="table-right">
+              <%= f.text_area :body, :size => 140 %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <%= f.label :youtube, "思い出の曲" %>
+            </th>
+            <th class="table-right">
+              <%= f.text_field :youtube %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <%= f.label :picture %>
+            </th>
+            <th class="table-right">
+              <%= f.file_field :picture %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+            </th>
+            <th class="table-right">
+              <%= f.submit "投稿する" %> 
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :day, "あの頃" %>
-    <%= f.date_field :day %>
-  </div>
-  <div class="field">
-    <%= f.label :address, "住所"%>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :body, "情景" %>
-    <%= f.text_field :body, :size => 140 %>
-  </div>
-  <div class="field">
-    <%= f.label :youtube, "思い出の曲(youtube_URL)" %>
-    <%= f.text_field :youtube %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
-  </div>
-    <%= f.submit "投稿する" %>
-<% end %>
-
-<%= link_to "一覧を表示", posts_path %>
-
+</div>

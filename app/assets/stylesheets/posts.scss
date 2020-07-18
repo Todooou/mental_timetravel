@@ -4,6 +4,52 @@
 
 
 
+.form-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 100px;
+}
 img {
     width: 400px;
+}
+
+input#post_title,
+input#post_body,
+input#post_day,
+input#post_youtube,
+input#post_address,
+textarea#post_body {
+    width: 80%;
+    margin-top: 20px;
+}
+input[type="submit"] {
+  margin: 20px;
+  background-color: pink;
+  padding: 10px;
+  border: thin;
+  border-radius: 20px;
+  width: 15%;
+}
+
+.posts_day {
+  background-color: pink;
+  width: 300px;
+  height: 300px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+  margin: auto;
+  line-height: 300px;
+  color: white;
+  letter-spacing: 3px;
+  border-radius: 300px;
+  font-family: 'Kaiti SC',sans-serif;
+}
+
+.posts_day_link {
+  text-decoration: none;
+}
+
+.table-left {
+  width: 30%;
 }

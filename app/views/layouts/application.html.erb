@@ -10,13 +10,25 @@
   </head>
 
   <body>
-  <div><%= link_to 'マイページ', mypage_path %></div>
-    <% if user_signed_in? %>
-      <div><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></div>
-    <% else %>
-      <div><%= link_to 'ログイン', new_user_session_path %></div>
-      <div><%= link_to 'アカウント作成', new_user_registration_path %></div>
-    <% end %>
+    <header>
+      <div class="header-wrapper">
+        <div class="header-left">
+          <h1>Mental Timetravel</h1>
+        </div>
+        <div class="header-right">
+          <ul>
+              <li><%= link_to "Top", root_path %></li>
+              <li><%= link_to 'Mypage', mypage_path %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+            <% else %>
+              <li><%= link_to 'Login', new_user_session_path %></li>
+              <li><%= link_to 'new account', new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

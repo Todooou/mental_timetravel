@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+ * { 
+  margin: 0;
+  padding: 0; 
+}
+
+header {
+  height: 50px;
+  background-color: #ccc;
+  font-family: 'Kaiti SC',sans-serif;
+}
+
+header a {
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;/* 親要素に左右均等分布!!!! */
+}
+h1 {
+  margin-left: 30px;
+  color: white;
+  display: inline-block;
+  
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  line-height: 50px;
+  list-style: none;
+}

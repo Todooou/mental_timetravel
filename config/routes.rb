@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root to: "posts#new"
   resources :posts
   resources :users, only: [:show, :edit, :update]
+  resources :relationships, only: [:create, :destroy]
   
 end
