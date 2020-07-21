@@ -20,8 +20,8 @@
 }
 
 header {
-  height: 50px;
-  background-color: #ccc;
+  height: 55px;
+  background-color: #e63946;
   font-family: 'Kaiti SC',sans-serif;
 }
 
@@ -35,11 +35,13 @@ header a {
 .header-wrapper {
   display: flex;
   justify-content: space-between;/* 親要素に左右均等分布!!!! */
+  align-items: center;
 }
 header h1 {
   margin-left: 30px;
   color: white;
   display: inline-block;
+  font-size: 28px;
   
 }
 
@@ -54,8 +56,11 @@ ul {
 .wrapper {
   width: 80%;
   margin: 0 auto;
+  height: 100vh;
 }
 
-.content-wrapper {
-  width: 100%;
+
+.header-left{
+  text-align: center;
+
 }

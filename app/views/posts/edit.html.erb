@@ -1,23 +1,25 @@
-<%= form_with model: @post do |f|  %>
-  <div class="field">
-    <%= f.label :タイトル %>
-    <%= f.text_field :title, :size => 140 %>
-  </div>
-  <div class="field">
-    <%= f.label :あの頃 %>
-    <%= f.date_field :day %>
-  </div>
-  <div class="field">
-    <%= f.label :あの場所%>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :情景 %>
-    <%= f.text_field :body, :size => 140 %>
-  </div>
-  <div class="field">
-    <%= f.label :youtube_url %>
-    <%= f.text_field :youtube %>
-  </div>
-    <%= f.submit "投稿する" %>
-<% end %>
+<div class="wrapper">
+  <%= form_with model: @post do |f|  %>
+    <div class="field">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title, :size => 140 %>
+    </div>
+    <div class="field">
+      <%= f.label :あの頃 %>
+      <%= f.date_field :day %>
+    </div>
+    <div class="field">
+      <%= f.label :あの場所%>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :情景 %>
+      <%= f.text_field :body, :size => 140 %>
+    </div>
+    <div class="field">
+      <%= f.label :youtube_url %>
+      <%= f.text_field :youtube %>
+    </div>
+      <%= f.submit "投稿する" %>
+  <% end %>
+</div>

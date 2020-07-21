@@ -1,8 +1,11 @@
-
-  <% @post.each do |t| %><br>
-      <%= link_to post_path(t.id),class: "posts_day_link" do %>
-        <div class="posts_day">
-          <span class="posts_day_txt"><%= t.day.strftime('%Y/%m/%d') %></span>
-        </div>
-      <% end%>
-  <% end %>
+<div class="wrapper">
+  <div class="content-wrapper">
+    <% @post.each do |t| %><br>
+        <%= link_to post_path(t.id),class: "posts_day_link" do %>
+          <div class="posts_day">
+            <span class="posts_day_txt"><%= t.day.strftime('%Y/%m/%d') %></span>
+          </div>
+        <% end%>
+    <% end %>
+  </div>
+</div>

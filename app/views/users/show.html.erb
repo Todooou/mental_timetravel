@@ -6,10 +6,12 @@
   <% end %>
 </div>
 <div class="user-edit">
-    <h3><%= @user.username %></h3>
       <%= image_tag @user.image_url, class:"icon_image"%><br>
+      <h3><%= @user.username %></h3>
       <% if user_signed_in? && @user == current_user %>
-      <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "profile" %>
+        <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "profile" %>
+      <% else %>
+        <%= render 'relationships/follow_button', user: @user %> 
       <% end %>
 </div>
 <div class="user-post">    

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:mypage, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
-  
+
   def show
     @user = User.find(params[:id])
     @post = current_user.posts.all.order(day: :desc)
@@ -25,9 +24,6 @@ class UsersController < ApplicationController
     end
   end
   private
-  def set_user
-    @user = User.find(params[:id])
-  end
   def user_params
     params.fetch(:user, {}).permit(:username,:image)
   end
