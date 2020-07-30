@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post = current_user.posts.all.order(day: :desc)
+    @post = @user.posts.all.order(day: :desc)
   end
   def index
     @user= User.all
