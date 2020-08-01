@@ -14,13 +14,15 @@ class PostsController < ApplicationController
         redirect_to :action => "show", :id => @post.id
       else
         redirect_to :action => "new"
-      end    
+      end
   end
   def index
     @post = current_user.posts.all.order(day: :desc)
   end
   def show
     @post = Post.find(params[:id])
+    results = Geocoder.search(@post.address)
+    @latlng = results.first.coordinates
   end
   def edit
     @post = Post.find(params[:id])

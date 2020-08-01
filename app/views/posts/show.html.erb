@@ -14,7 +14,7 @@
   <div class="map-content">
           <div class="inputaddress">
             <p>思い出の場所</p>
-            <input id="address" type="textbox" value="<%= @post.address %>">
+            <input id="address" type="textbox" value="">
             <input type="button" value="Encode" onclick="codeAddress()">
           </div>
 
@@ -23,8 +23,8 @@
             #pano {
                 float: left;
                 height: 300px;
-                width: 50%; }
-
+                width: 50%; 
+            }
             </style>
 
             <script>
@@ -32,21 +32,23 @@
             let geocoder
 
             function initMap(){
-              // geocoderを初期化
               geocoder = new google.maps.Geocoder()
-              var fenway = { lat: 42.345573, lng: -71.098326 };
               map = new google.maps.Map(
                 document.getElementById('map'),{
-                center: fenway,
-                zoom: 15
+                center: { lat: <%= @latlng[0] %>, lng:  <%= @latlng[1] %>},
+                zoom: 15,
               });
               var panorama = new google.maps.StreetViewPanorama(
                 document.getElementById('pano'),{
-                position: fenway,
+                position: { lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>},
                 pov:{
                   heading: 34,
                   pitch: 10
                 }
+              });
+              marker = new google.maps.Marker({
+                position: { lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>},
+                map: map
               });
             }
 
@@ -58,38 +60,35 @@
               }
             }
 
-            function codeAddress(){
-              // 入力を取得
-              let inputAddress = document.getElementById('address').value;
-              // geocodingしたあとmapを移動
-              geocoder.geocode( { 'address': inputAddress}, 
-                  function(results, status) {
-                if (status == 'OK') {
-              // map.setCenterで地図が移動
-                  map.setCenter(results[0].geometry.location);
-              //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-                  // var marker = new google.maps.Marker({
-                  //     map: map,
-                  //     position: results[0].geometry.location,
-                  //     draggable: true,
-                  //     animation: google.maps.Animation.DROP,
-                  // });
-                  var panorama = new google.maps.StreetViewPanorama(
-                    document.getElementById('pano'),{
-                    position: results[0].geometry.location,
-                    draggable: true,
-                    pov:{
-                      heading: 34,
-                      pitch: 10
-                    }
-                    
-                  });
-                map.setStreetView(panorama);
-            } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-                }
-              });
-            }
+            // function codeAddress(){
+            //   // 入力を取得
+            //   let inputAddress = document.getElementById('address').value;
+            //   // geocodingしたあとmapを移動
+            //   geocoder.geocode( { 'address': inputAddress}, 
+            //       function(results, status) {
+            //     if (status == 'OK') {
+            //       map.setCenter(results[0].geometry.location);
+            //       //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+            //       var marker = new google.maps.Marker({
+            //           map: map,
+            //           position: results[0].geometry.location,
+            //           draggable: true,
+            //       });
+            //       map.setStreetView(panorama);
+            //       var panorama = new google.maps.StreetViewPanorama(
+            //           document.getElementById('pano'),{
+            //           position: results[0].geometry.location,
+            //           draggable: true,
+            //           pov:{＋
+            //             heading: 34,
+            //             pitch: 10
+            //           } 
+            //       });
+            // } else {
+            //       alert('Geocode was not successful for the following reason:' + status);
+            //     }
+            //   });
+            // }
 
 
             </script>
