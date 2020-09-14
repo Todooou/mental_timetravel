@@ -23,6 +23,8 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(current_user)
     end
   end
+
+  
   private
   def user_params
     params.fetch(:user, {}).permit(:username,:image)

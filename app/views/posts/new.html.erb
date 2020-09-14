@@ -1,63 +1,172 @@
 <div class="wrapper">
   <p class="post_title">あなたの思い出を可視化しよう</p>
-    <div class="form-wrapper">
-      <%= form_with( model: @post, local: true ) do |f|  %>
-        <table class="access-table">
-          <tbody>
-            <tr>
-              <th class="table-left">
-                <%= f.label :title, "タイトル" %>
-              </th>
-              <th class="table-right title">
-                <%= f.text_field :title, :size => 140 %>
-              </th>
-            </tr>
-            <tr>
-              <th class="table-left">
-                <%= f.label :day, "あの頃" %>
-              </th>
-              <th class="table-right ">
-                <%= f.date_field :day %>
-              </th>
-            </tr>
-            <tr>
-              <th class="table-left">
-                <%= f.label :address, "場所" %>
-              </th>
-              <th class="table-right ">
-                <%= f.text_field :address %>
-              </th>
-            </tr>
-            <tr>
-              <th class="table-left">
-                <%= f.label :body, "情景" %>
-              </th>
-              <th class="table-right">
-                <%= f.text_area :body, :size => 140 %>
-              </th>
-            </tr>
-            <tr>
-              <th class="table-left">
-                <%= f.label :youtube, "思い出の曲" %>
-              </th>
-              <th class="table-right">
-                <%= f.text_field :youtube %>
-              </th>
-            </tr>
-            <tr>
-              <th class="table-left">
-                <%= f.label :picture %>
-              </th>
-              <th class="table-right">
-                <%= f.file_field :picture %>
-              </th>
-            </tr>
-          </tbody>
-        </table>
-        <div class="table-right-submit-btn">
-          <%= f.submit "投稿する", class:"submit-btn" %> 
-        </div>
-      <% end %>    
+  <div class="form-wrapper">
+    <%= form_with( model: @post, local: true ) do |f|  %>
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title ,class:"form-control"%>
     </div>
+    <div class="form-group">
+      <%= f.label :day, "あの頃" %>
+      <%= f.date_field :day, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address, "場所" %>
+      <%= f.text_field :address, class:"form-control" %>
+      <button type="button" onclick="codeAddress()">検索</button>
+    </div>
+      <div class="col-sm" id="map"></div>
+    <div class="form-group">
+      <%= f.label :body, "情景" %>
+      <%= f.text_area :body, :size => 140 , class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :youtube, "思い出の曲" %>
+      <%= f.text_field :youtube, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :picture %>
+      <%= f.file_field :picture, class:"form-control-file"%>
+    </div>
+    <%= f.submit "投稿する", class:"btn btn-info" %>
+    <% end %>
+  </div>
 </div>
 
+<div class="map-content">
+  <script>
+    let map
+    let geocoder
+
+    function initMap() {
+      geocoder = new google.maps.Geocoder()
+      map = new google.maps.Map(
+        document.getElementById('map'), {
+          center: { lat:35.663953,  lng:139.718235},
+          zoom: 4,
+        });
+      var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('pano'), {
+
+          pov: {
+            heading: 34,
+            pitch: 10
+          }
+        });
+      marker = new google.maps.Marker({
+        map: map
+      });
+    }
+
+    function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+
+    function codeAddress() {
+      // 入力を取得
+      let inputAddress = document.getElementById('post_address').value;
+      // geocodingしたあとmapを移動
+      geocoder.geocode({
+          'address': inputAddress
+        },
+        function (results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              /*draggable: true,*/
+            });
+            // map.setStreetView(panorama);
+            // var panorama = new google.maps.StreetViewPanorama(
+            //     document.getElementById('pano'),{
+            //     position: results[0].geometry.location,
+            //     draggable: true,
+            //     pov:{＋
+            //       heading: 34,
+            //       pitch: 10
+            //     } 
+            // });
+          } else {
+            alert('Geocode was not successful for the following reason:' + status);
+          }
+        });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async
+    defer></script>
+</div>
+
+
+
+
+
+<%
+=begin
+%>
+<table class="access-table">
+  <tbody>
+    <tr>
+      <th class="table-left">
+        <%= f.label :title, "タイトル" %>
+      </th>
+      <th class="table-right title">
+        <%= f.text_field :title %>
+      </th>
+    </tr>
+    <tr>
+      <th class="table-left">
+        <%= f.label :day, "あの頃" %>
+      </th>
+      <th class="table-right ">
+        <%= f.date_field :day %>
+      </th>
+    </tr>
+    <tr>
+      <th class="table-left">
+        <%= f.label :address, "場所" %>
+      </th>
+      <th class="table-right ">
+        <%= f.text_field :address %>
+      </th>
+    </tr>
+    <tr>
+      <th class="table-left">
+        <%= f.label :body, "情景" %>
+      </th>
+      <th class="table-right">
+        <%= f.text_area :body, :size => 140 %>
+      </th>
+    </tr>
+    <tr>
+      <th class="table-left">
+        <%= f.label :youtube, "思い出の曲" %>
+      </th>
+      <th class="table-right">
+        <%= f.text_field :youtube %>
+      </th>
+    </tr>
+    <tr>
+      <th class="table-left">
+        <%= f.label :picture %>
+      </th>
+      <th class="table-right">
+        <%= f.file_field :picture %>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<div class="table-right-submit-btn">
+  <%= f.submit "投稿する", class:"submit-btn" %>
+</div>
+</div>
+<% end %>
+
+<%
+=end
+%>

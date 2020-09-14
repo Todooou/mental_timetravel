@@ -13,7 +13,6 @@
   padding: 10px;
 }
 
-
 .icon_image {
   width: 100px;
   height: 100px;
@@ -27,17 +26,21 @@
 
 h1 {
   color: black;
+  text-align: center;
 }
 
-.user-edit {
-  margin: 0 auto;
-  width: 100%;
+.user-info{
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.user-profile {
+  display: flex;
 }
 
 .user-edit h3 {
   font-size: 40px;
+  text-align: center;
 }
 
 a.profile {

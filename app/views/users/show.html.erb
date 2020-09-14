@@ -5,16 +5,22 @@
     <h1>Userpage</h1>
   <% end %>
 </div>
-<div class="user-edit">
-      <%= image_tag @user.image_url, class:"icon_image"%><br>
-      <h3><%= @user.username %></h3>
-      <% if user_signed_in? && @user == current_user %>
-        <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "profile" %>
-      <% else %>
-        <%= render 'relationships/follow_button', user: @user %> 
-      <% end %>
+<div class="user-info">
+  <div class="user-profile">
+    <%= image_tag @user.image_url, class:"icon_image"%>
+  </div>
+  <div class="user-button">
+    <h3><%= @user.username %></h3>
+  </div>
+  <div class="user-follow">
+  <% if user_signed_in? && @user == current_user %>
+          <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "btn btn-info" %>
+        <% else %>
+          <%= render 'relationships/follow_button', user: @user %> 
+        <% end %>
+  </div>
 </div>
-<div class="user-post">    
+<div class="user-post">   
       <% @post.each do |t| %><br>
           <%= link_to post_path(t.id),class: "posts_day_link" do %>
             <div class="posts_day">
