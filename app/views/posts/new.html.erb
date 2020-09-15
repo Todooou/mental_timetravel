@@ -1,3 +1,4 @@
+
 <div class="wrapper">
   <p class="post_title">あなたの思い出を可視化しよう</p>
   <div class="form-wrapper">
@@ -13,9 +14,11 @@
     <div class="form-group">
       <%= f.label :address, "場所" %>
       <%= f.text_field :address, class:"form-control" %>
-      <button type="button" onclick="codeAddress()">検索</button>
     </div>
-      <div class="col-sm" id="map"></div>
+    <div class="map-group">
+      <button type="button" onclick="codeAddress()" class="btn btn-info onclick">検索</button>
+      <div id="map"></div>
+    </div>
     <div class="form-group">
       <%= f.label :body, "情景" %>
       <%= f.text_area :body, :size => 140 , class:"form-control" %>
@@ -28,7 +31,9 @@
       <%= f.label :picture %>
       <%= f.file_field :picture, class:"form-control-file"%>
     </div>
-    <%= f.submit "投稿する", class:"btn btn-info" %>
+    <div class="submit-group">
+      <%= f.submit "投稿する", class:"btn btn-info submit" %>
+    </div>
     <% end %>
   </div>
 </div>

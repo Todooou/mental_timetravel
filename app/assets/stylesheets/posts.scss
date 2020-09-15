@@ -4,15 +4,20 @@
 
 
 /* new */
-.form-wrapper {
-  width: 50%;
-  margin: 0 auto;
-  padding-top: 100px;
-  font-family: 'klee',sans-serif;
 
+.form-wrapper {
+  border: 2px solid #457b9d;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color:#f1faee;
+  font-family: 'klee',sans-serif;
 }
 img {
-    width: 400px;
+    width: 90%;
 }
 
 .form-control{
@@ -20,28 +25,15 @@ img {
   width: 95%;
 }
 
-
-.submit-btn {
-  background-color: #a8dadc;
-  padding: 10px;
-  border: thin;
-  border-radius: 20px;
-  width: 80px;
-  font-family: 'klee',sans-serif;
-  width: 30%;
-  margin: 30px auto 10px;
-  display: block; 
-}
-
 .posts_day {
   background-color: #a8dadc;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   font-weight: bold;
   text-align: center;
   font-size: 25px;
   margin: auto;
-  line-height: 300px;
+  line-height: 280px;
   color: white;
   letter-spacing: 3px;
   border-radius: 300px;
@@ -52,8 +44,10 @@ img {
   text-align: center;
   font-size: 20px;
   letter-spacing: 3px;
-  margin: 30px;
+  margin: 70px 0 40px 0;
+  
 }
+
 textarea#post_body {
   height: 100px;
   margin-top: 10px;
@@ -62,15 +56,6 @@ textarea#post_body {
   text-decoration: none;
 }
 
-.table-left {
-  width: 30%;
-  font-family: 'klee',sans-serif;
-}
-
-.table-right-subit-btn {
-  width: 100%;
-  text-align: center;
-}
 
 
 body {
@@ -79,27 +64,32 @@ body {
 
 .content-wrapper{
   text-align: center;
+  width: 100%;
+  margin: 55px 0;
 }
-
+.map-group {
+  height: 350px;
+}
+.onclick {
+  margin-bottom: 10px;
+}
+.submit-group {
+  width: 95%;
+  margin: auto;
+}
+.submit {
+    width:100%;
+}
 
 /* show */
 .post-content p {
   font-size: 30px;
 }
 
-
-.form-wrapper {
-  border: 2px solid #457b9d;
-  width: 50%;
-  margin: auto;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  background-color:#f1faee ;
+.map-group{
+  width: 95%;
+  margin: 0 auto 1rem;
 }
-
-/* post_show*/
 
 .post-link {
   margin-top: 20px;
@@ -109,4 +99,42 @@ body {
 #pano {
     float: left;
     height: 300px;
+    width: 100%;
+}
+.post-content {
+  border: 2px solid #457b9d;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color:#f1faee;
+  font-family: 'klee',sans-serif;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 959px) {
+  /* 959px以下に適用されるCSS（タブレット用） */
+  /* new */
+  .wrapper {
+    width: 95%;
+  }
+  .form-wrapper {
+    width: 100%;
+  }
+  .post-content {
+    width: 80%;
+  }
+
+}
+@media screen and (max-width: 480px) {
+  /* 480px以下に適用されるCSS（スマホ用） */
+  .post-content {
+    width: 90%;
+  }
+  .img {
+    width: 200px;
+  }
+  
 }

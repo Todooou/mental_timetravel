@@ -20,29 +20,22 @@
 }
 
 header {
-  height: 55px;
-  background-color: #e63946;
+  
   font-family: 'Kaiti SC',sans-serif;
 }
 
 header a {
-  color: white;
+  
   font-weight: bold;
   padding: 20px;
   
 }
 
-.header-wrapper {
-  display: flex;
-  justify-content: space-between;/* 親要素に左右均等分布!!!! */
-  align-items: center;
-}
 header h1 {
   margin-left: 30px;
   color: white;
   display: inline-block;
   font-size: 28px;
-  
 }
 
 ul {
@@ -54,13 +47,20 @@ ul {
 }
 
 .wrapper {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   height: 100vh;
 }
 
+.navbar{
+  background-color: #e63946;
+  color:white;
+  
+}
 
-.header-left{
-  text-align: center;
-
+a.nav-link {
+  color: white;
+}
+.navbar-brand {
+  font-size: 25px;
 }
