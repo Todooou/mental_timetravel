@@ -81,6 +81,7 @@
         function (results, status) {
           if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
+            map.setZoom(17);
             //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
             var marker = new google.maps.Marker({
               map: map,

@@ -1,25 +1,111 @@
+
 <div class="wrapper">
-  <%= form_with model: @post do |f|  %>
-    <div class="field">
-      <%= f.label :タイトル %>
-      <%= f.text_field :title, :size => 140 %>
+  <p class="post_title">あなたの思い出を可視化しよう</p>
+  <div class="form-wrapper">
+    <%= form_with( model: @post, local: true ) do |f|  %>
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title ,class:"form-control"%>
     </div>
-    <div class="field">
-      <%= f.label :あの頃 %>
-      <%= f.date_field :day %>
+    <div class="form-group">
+      <%= f.label :day, "あの頃" %>
+      <%= f.date_field :day, class:"form-control" %>
     </div>
-    <div class="field">
-      <%= f.label :あの場所%>
-      <%= f.text_field :address %>
+    <div class="form-group">
+      <%= f.label :address, "場所" %>
+      <%= f.text_field :address, class:"form-control" %>
     </div>
-    <div class="field">
-      <%= f.label :情景 %>
-      <%= f.text_field :body, :size => 140 %>
+    <div class="map-group">
+      <button type="button" onclick="codeAddress()" class="btn btn-info onclick">検索</button>
+      <div id="map"></div>
     </div>
-    <div class="field">
-      <%= f.label :youtube_url %>
-      <%= f.text_field :youtube %>
+    <div class="form-group">
+      <%= f.label :body, "情景" %>
+      <%= f.text_area :body, :size => 140 , class:"form-control" %>
     </div>
-      <%= f.submit "投稿する" %>
-  <% end %>
+    <div class="form-group">
+      <%= f.label :youtube, "思い出の曲" %>
+      <%= f.text_field :youtube, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :picture %>
+      <%= f.file_field :picture, class:"form-control-file"%>
+    </div>
+    <div class="submit-group">
+      <%= f.submit "編集する", class:"btn btn-info submit" %>
+    </div>
+    <% end %>
+  </div>
 </div>
+
+<div class="map-content">
+  <script>
+    let map
+    let geocoder
+
+    function initMap() {
+      geocoder = new google.maps.Geocoder()
+      map = new google.maps.Map(
+        document.getElementById('map'), {
+          center: { lat:35.663953,  lng:139.718235},
+          zoom: 4,
+        });
+      var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('pano'), {
+
+          pov: {
+            heading: 34,
+            pitch: 10
+          }
+        });
+      marker = new google.maps.Marker({
+        map: map
+      });
+    }
+
+    function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+
+    function codeAddress() {
+      // 入力を取得
+      let inputAddress = document.getElementById('post_address').value;
+      // geocodingしたあとmapを移動
+      geocoder.geocode({
+          'address': inputAddress
+        },
+        function (results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            map.setZoom(17);
+            //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              /*draggable: true,*/
+            });
+            // map.setStreetView(panorama);
+            // var panorama = new google.maps.StreetViewPanorama(
+            //     document.getElementById('pano'),{
+            //     position: results[0].geometry.location,
+            //     draggable: true,
+            //     pov:{＋
+            //       heading: 34,
+            //       pitch: 10
+            //     } 
+            // });
+          } else {
+            alert('Geocode was not successful for the following reason:' + status);
+          }
+        });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async
+    defer></script>
+</div>
+
+

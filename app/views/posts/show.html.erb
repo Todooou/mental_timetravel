@@ -10,7 +10,7 @@
       <iframe src="https://www.youtube.com/embed/<%= @post.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </p>
     <% end%>
-      思い出の場所:<%= @post.address %><%= @latlng[0]%>//<%= @latlng[1]%>
+      思い出の場所:<%= @post.address %>
   
   <div class="map-content">
             <div class="row">
@@ -18,7 +18,8 @@
               <div class="col-sm" id="pano"></div>
             </div>
             <script> 
-            
+            let map
+            let geocoder
             function initMap(){
               console.log("abc");
               geocoder = new google.maps.Geocoder()

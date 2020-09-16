@@ -1,9 +1,17 @@
-<h1>ユーザー一覧</h1>
-<% @user.each do |user| %>
-  <%= link_to user_path(user.id) do %>
-    <%= image_tag user.image_url, class: "icon_image" %>
-    <%= user.username %><br>
+<div class="index-content">
+  <p>ユーザー一覧</p>
+  <% @user.each do |user| %>
+    <div class="index-user">
+      <div class="image-content">
+        <%= link_to user_path(user.id) do %>
+        <%= image_tag user.image_url, class:"icon_image" %>
+      </div>
+      <div class="user-name">
+        <%= user.username%>
+      </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>
 
 <%#= render "relationships/follow_button", user: @user %>

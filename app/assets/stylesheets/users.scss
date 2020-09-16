@@ -24,21 +24,31 @@
   margin: 10px;
 }
 
-h1 {
-  color: black;
-  text-align: center;
-  font-family: 'Kaiti SC',sans-serif;
-}
+
 .user-wrapper {
-  width: 40%;
+  width: 60%;
   margin: auto;
 }
+.user-content {
+  border: 2px solid #457b9d;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+h2 {
+  font-family: 'Kaiti SC',sans-serif;
+  color: #444;
+}
+
 .user-info{
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 30px 0;
+  margin: 30px auto;
 }
 
 .user-edit h3 {
@@ -87,7 +97,7 @@ input.btn.btn-primary.btn-block{
   margin-top: 20px;
   border-radius: 10px;
   text-align: center;
-  background-color:#f1faee
+  background-color:#f1faee;
 }
 
 
@@ -95,6 +105,29 @@ input.btn.btn-primary.btn-block{
   text-align: center;
 }
 
+/*index*/
+.index-content{
+  border: 2px solid #457b9d;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+.index-user {
+  display: flex;
+  align-items: center;
+}
+.index-content p{
+  text-align: center;
+}
+
+.user-name {
+  font-size: 30px;
+  color: #333;
+  font-family: 'Kaiti SC',sans-serif;
+}
 
 @media screen and (max-width: 959px) {
   /* 959px以下に適用されるCSS（タブレット用） */
@@ -107,8 +140,19 @@ input.btn.btn-primary.btn-block{
     width: 100%;
     height: 100vh;
     margin: auto;
+  } 
+
+  /*show*/
+  .user-info{
+    justify-content: space-between;
+    margin: 0;
+
   }
 
+  /*index*/
+  .index-content{
+    width: 80%;
+  }
 }
 @media screen and (max-width: 480px) {
   /* 480px以下に適用されるCSS（スマホ用） */
@@ -120,6 +164,10 @@ input.btn.btn-primary.btn-block{
   }
   .user-post {
     width: 100%;
+  }
+
+  h3 {
+    margin-right: 20px;
   }
 }
 
