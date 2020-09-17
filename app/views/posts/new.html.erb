@@ -1,4 +1,3 @@
-
 <div class="wrapper">
   <p class="post_title">あなたの思い出を可視化しよう</p>
   <div class="form-wrapper">
@@ -47,7 +46,10 @@
       geocoder = new google.maps.Geocoder()
       map = new google.maps.Map(
         document.getElementById('map'), {
-          center: { lat:35.663953,  lng:139.718235},
+          center: {
+            lat: 35.663953,
+            lng: 139.718235
+          },
           zoom: 4,
         });
       var panorama = new google.maps.StreetViewPanorama(

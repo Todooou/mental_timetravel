@@ -26,12 +26,12 @@
 
 
 .user-wrapper {
-  width: 60%;
+  width: 0%;
   margin: auto;
 }
 .user-content {
   border: 2px solid #457b9d;
-  width: 100%;
+  width: 60%;
   margin: auto;
   padding: 20px;
   margin-top: 20px;
@@ -67,7 +67,7 @@ a.profile {
   text-align: center;
 }
 .edit{
-  width: 30%;
+  width: 40%;
 }
 .user-post {
   margin-top: 30px;
@@ -141,17 +141,20 @@ input.btn.btn-primary.btn-block{
     height: 100vh;
     margin: auto;
   } 
+  .back{
+    text-align: center;
+    margin-top: 20px;
+  }
 
   /*show*/
   .user-info{
     justify-content: space-between;
     margin: 0;
-
   }
 
   /*index*/
   .index-content{
-    width: 80%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 480px) {

@@ -17,10 +17,6 @@ class PostsController < ApplicationController
       end
   end
 
-  def index
-    @post = current_user.posts.all.order(day: :desc)
-  end
-
   def show
     @post = Post.find(params[:id])
     results = Geocoder.search(@post.address)
@@ -40,8 +36,8 @@ class PostsController < ApplicationController
     end
   end
   def destroy
-    Post.find(params[:id]).destroy
-    redirect_to action: :index
+      Post.find(params[:id]).destroy
+      redirect_to user_path(current_user.id)
   end
 
 

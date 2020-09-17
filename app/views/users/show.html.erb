@@ -1,7 +1,5 @@
-
-
-<div class="user-wrapper">
-  <div class="user-content">
+<div class="wrapper">
+  <div class="index-content">
     <div class="user-info">
       <div class="user-profile">
         <%= image_tag @user.image_url, class:"icon_image"%>
@@ -12,19 +10,27 @@
     </div>
     <div class="user-follow">
       <% if user_signed_in? && @user == current_user %>
-              <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "btn btn-outline-info edit" %>
-            <% else %>
-              <%= render 'relationships/follow_button', user: @user %> 
-            <% end %>
+      <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "btn btn-outline-info edit" %>
+      <% else %>
+      <%= render 'relationships/follow_button', user: @user %>
+      <% end %>
     </div>
   </div>
-<div class="user-post">   
-      <% @post.each do |t| %><br>
-          <%= link_to post_path(t.id),class: "posts_day_link" do %>
-            <div class="posts_day">
-              <span class="posts_day_txt"><%= t.day.strftime('%Y/%m/%d') %></span>
-            </div>
-          <% end%>
-      <% end %>
+  <%# if @user.id == current_user.id %>
+    <div class="user-post">
+      <div class="each-post">
+        <% @post.each do |t| %><br>
+        <%= link_to post_path(t.id),class: "posts_day_link" do %>
+        <div class="round">
+          <div class="post_txt">
+            <h4><%= t.day.strftime('%Y/%m/%d') %></h4>
+            <p class="title_txt"><%= t.title %></p>
+          </div>
+        </div>
+        <% end%>
+        <% end %>
+      </div>
+    </div>
+  <%# else %>
+  <%# end %>
 </div>
-

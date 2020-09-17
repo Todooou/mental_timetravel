@@ -1,6 +1,7 @@
-<div class="index-content">
-  <p>ユーザー一覧</p>
-  <% @user.each do |user| %>
+<div class="wrapper">
+  <p class="post_title">ユーザー一覧</p>
+  <div class="index-content">
+    <% @user.each do |user| %>
     <div class="index-user">
       <div class="image-content">
         <%= link_to user_path(user.id) do %>
@@ -11,7 +12,9 @@
       </div>
       <% end %>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
 
 <%#= render "relationships/follow_button", user: @user %>
