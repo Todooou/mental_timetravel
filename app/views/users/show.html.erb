@@ -1,27 +1,51 @@
 <div class="wrapper">
-  <div class="index-content">
-    <div class="user-info">
-      <div class="user-profile">
-        <%= image_tag @user.image_url, class:"icon_image"%>
+  <div class="user-show-wrapper">
+    <div class="index-content">
+      <div class="user-info">
+        <div class="user-profile">
+          <%= image_tag @user.image_url, class:"icon_image"%>
+        </div>
+        <div class="user-button">
+          <h2><%= @user.username %></h2>
+          思い出数：<%= @user.posts.count %>
+        </div>
       </div>
-      <div class="user-button">
-        <h2><%= @user.username %></h2>
+      <div class="user-follow">
+        <% if user_signed_in? && @user == current_user %>
+        <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "btn btn-info edit" %>
+        <% else %>
+        <%= render 'relationships/follow_button', user: @user %>
+        <% end %>
       </div>
     </div>
-    <div class="user-follow">
-      <% if user_signed_in? && @user == current_user %>
-      <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "btn btn-outline-info edit" %>
-      <% else %>
-      <%= render 'relationships/follow_button', user: @user %>
-      <% end %>
-    </div>
-  </div>
-  <%# if @user.id == current_user.id %>
+    <% if @post %>
     <div class="user-post">
       <div class="each-post">
         <% @post.each do |t| %><br>
         <%= link_to post_path(t.id),class: "posts_day_link" do %>
         <div class="round">
+        <% if @post.genre == "旅行"%>
+          <style>
+          .round {
+            background-color: pink;
+          }
+          </style>
+
+        <% elsif @post.genre == "遊び"%>
+        <style>
+        .round {
+            background-color: orange;
+          }
+        </style>
+        <% else %>
+        <style>
+        .round {
+            background-color: green;
+          }
+          </style>
+
+        <% end %>
+
           <div class="post_txt">
             <h4><%= t.day.strftime('%Y/%m/%d') %></h4>
             <p class="title_txt"><%= t.title %></p>
@@ -31,6 +55,6 @@
         <% end %>
       </div>
     </div>
-  <%# else %>
-  <%# end %>
+    <% end %>
+  </div>
 </div>

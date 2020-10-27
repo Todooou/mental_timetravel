@@ -1,4 +1,3 @@
-
 <div class="content-wrapper">
   <div class="post-content">
 
@@ -13,7 +12,7 @@
       </div>
     <% if @post.youtube.present? %>
       <p>- あの頃の曲 -</p>
-      <iframe src="https://www.youtube.com/embed/<%= @post.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/<%= @post.youtube_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </p>
     <% end%>
       <p>- 思い出の場所 -</p>
@@ -28,7 +27,6 @@
             let map
             let geocoder
             function initMap(){
-              console.log("abc");
               geocoder = new google.maps.Geocoder()
               map = new google.maps.Map(
                 document.getElementById('map'),{

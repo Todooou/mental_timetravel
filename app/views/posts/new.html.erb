@@ -1,21 +1,33 @@
 <div class="wrapper">
-  <p class="post_title">あなたの思い出を可視化しよう</p>
+
+<div class="textcontainer">
+  <span class="particletext hearts"><p class="post_title">Post your memories</p></span>
+</div>
+  
   <div class="form-wrapper">
     <%= form_with( model: @post, local: true ) do |f|  %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
-      <%= f.label :title, "タイトル" %>
+      <%= f.label :title, "タイトル" %> 
       <%= f.text_field :title ,class:"form-control"%>
     </div>
+    <div class="group">
+      <%= f.label :genre, "ジャンル" %>
+      <div class="form-group">
+        <%= f.select :genre, ['国内旅行', '海外旅行', 'デート','ごはん','飲み会','サークル・部活'], {include_blank: '選択ボックス'}, class: 'sample' %>
+      </div>
     <div class="form-group">
-      <%= f.label :day, "あの頃" %>
+      <%= f.label  "あの頃" %><span class="must"> ※</span>
       <%= f.date_field :day, class:"form-control" %>
     </div>
-    <div class="form-group">
-      <%= f.label :address, "場所" %>
-      <%= f.text_field :address, class:"form-control" %>
+    <div class="group">
+      <%= f.label  "場所" %><span class="must"> ※</span>
+      <div class="basho-group">
+        <%= f.text_field :address, class:"form-control basho" %>
+      <button type="button" onclick="codeAddress()" class="btn btn-info onclick">検索</button>
+      </div>
     </div>
     <div class="map-group">
-      <button type="button" onclick="codeAddress()" class="btn btn-info onclick">検索</button>
       <div id="map"></div>
     </div>
     <div class="form-group">
@@ -23,12 +35,14 @@
       <%= f.text_area :body, :size => 140 , class:"form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :youtube, "思い出の曲" %>
-      <%= f.text_field :youtube, class:"form-control" %>
+      <%= f.label :youtube_url, "思い出の曲" %>
+      <%= f.text_field :youtube_url, class:"form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :picture %>
-      <%= f.file_field :picture, class:"form-control-file"%>
+      <%= f.label :image1 %>
+      <%= f.file_field :image1, class:"form-control-file"%>
+      <%= f.file_field :image2, class:"form-control-file"%>
+      <%= f.file_field :image3, class:"form-control-file"%>
     </div>
     <div class="submit-group">
       <%= f.submit "投稿する", class:"btn btn-info submit" %>
@@ -74,9 +88,7 @@
     }
 
     function codeAddress() {
-      // 入力を取得
       let inputAddress = document.getElementById('post_address').value;
-      // geocodingしたあとmapを移動
       geocoder.geocode({
           'address': inputAddress
         },
@@ -84,11 +96,9 @@
           if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
             map.setZoom(17);
-            //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
-              /*draggable: true,*/
             });
             // map.setStreetView(panorama);
             // var panorama = new google.maps.StreetViewPanorama(
@@ -109,72 +119,3 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async
     defer></script>
 </div>
-
-
-
-
-
-<%
-=begin
-%>
-<table class="access-table">
-  <tbody>
-    <tr>
-      <th class="table-left">
-        <%= f.label :title, "タイトル" %>
-      </th>
-      <th class="table-right title">
-        <%= f.text_field :title %>
-      </th>
-    </tr>
-    <tr>
-      <th class="table-left">
-        <%= f.label :day, "あの頃" %>
-      </th>
-      <th class="table-right ">
-        <%= f.date_field :day %>
-      </th>
-    </tr>
-    <tr>
-      <th class="table-left">
-        <%= f.label :address, "場所" %>
-      </th>
-      <th class="table-right ">
-        <%= f.text_field :address %>
-      </th>
-    </tr>
-    <tr>
-      <th class="table-left">
-        <%= f.label :body, "情景" %>
-      </th>
-      <th class="table-right">
-        <%= f.text_area :body, :size => 140 %>
-      </th>
-    </tr>
-    <tr>
-      <th class="table-left">
-        <%= f.label :youtube, "思い出の曲" %>
-      </th>
-      <th class="table-right">
-        <%= f.text_field :youtube %>
-      </th>
-    </tr>
-    <tr>
-      <th class="table-left">
-        <%= f.label :picture %>
-      </th>
-      <th class="table-right">
-        <%= f.file_field :picture %>
-      </th>
-    </tr>
-  </tbody>
-</table>
-<div class="table-right-submit-btn">
-  <%= f.submit "投稿する", class:"submit-btn" %>
-</div>
-</div>
-<% end %>
-
-<%
-=end
-%>

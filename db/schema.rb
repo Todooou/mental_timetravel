@@ -10,19 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_232155) do
+ActiveRecord::Schema.define(version: 2020_10_27_152739) do
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.string "genre"
     t.datetime "day"
     t.string "title"
     t.text "body"
-    t.string "picture"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.string "youtube"
+    t.string "youtube_url"
     t.integer "user_id"
   end
 

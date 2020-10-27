@@ -1,0 +1,2 @@
+class AddColumnsToPost < ApplicationRecord
+end

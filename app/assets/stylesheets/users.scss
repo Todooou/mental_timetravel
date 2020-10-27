@@ -2,16 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+/* show */
 
+.user-show-wrapper{
+  width: 85%;
+  margin: auto;
+}
 .profile {
   font-size: 15px;
   font-weight: bold;
-  color: black;
   text-decoration: none;
-  background-color: #a8dadc;
+  background-color: rgba(168,218,220,0.2);
   border-radius: 30px;
   padding: 10px;
 }
+
 
 .icon_image {
   width: 100px;
@@ -22,6 +27,7 @@
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
   margin: 10px;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.08)
 }
 
 
@@ -30,13 +36,13 @@
   margin: auto;
 }
 .user-content {
-  border: 2px solid #457b9d;
   width: 60%;
   margin: auto;
   padding: 20px;
   margin-top: 20px;
   border-radius: 10px;
   text-align: center;
+  
 }
 h2 {
   font-family: 'Kaiti SC',sans-serif;
@@ -59,19 +65,81 @@ h2 {
 a.profile {
   margin: 10px;
   height: 15px;
-  background-color: #457b9d;
+  background-color: rgba(168,218,220,0.2);
   color: white;
+}
+
+
+.round {
+  width: 280px;
+  height: 280px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+  font-family: "Kaiti SC", sans-serif;
+  display: table;
+  box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+
+  .post_txt {
+    color: white;
+  }
+  &:hover {
+    background-color: rgb(91, 71, 71);
+    .post_txt {
+      color: #a8dadc;
+    }
+  }
+}
+.round:hover {
+  background-color: white;
+  transition: 0.5s;
+  .post_txt {
+  color: #a8dadc;
+  }
+}
+
+.post_txt {
+  height: 280px;
+  border-radius: 300px;
+  color: white;
+  letter-spacing: 3px;
+  display: table-cell;
+  vertical-align: middle;
+  h4,p {
+    background: (none);
+  }
+}
+.title_txt {
+  font-size: 14px;
+}
+.each-post {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+.user-post {
+  margin:  0 auto 80px;
+  border-top: 1px solid #1A6798;
+  border-bottom: 1px solid #1A6798;
+  padding: 30px 0;
 }
 
 .user-follow {
   text-align: center;
 }
 .edit{
-  width: 40%;
+  width: 100%;
+  color:  #FFF;
+  border: 1px solid  #457b9d;
+  box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.06)
 }
-.user-post {
-  margin-top: 30px;
+.edit1 {
+  color: #457b9d;
+  background: white;
 }
+
 
 input.btn.btn-danger.btn-block,
 input.btn.btn-primary.btn-block{
@@ -82,6 +150,7 @@ input.btn.btn-primary.btn-block{
   border-radius: 20px;
   width: 80px;
   font-family: 'klee',sans-serif;
+  box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.06)
 }
 
 .sign-up-wrapper,.user-edit-content-wrapper{
@@ -97,7 +166,7 @@ input.btn.btn-primary.btn-block{
   margin-top: 20px;
   border-radius: 10px;
   text-align: center;
-  background-color:#f1faee;
+  background-color: rgba(168,218,220,0.2);
 }
 
 
@@ -107,13 +176,10 @@ input.btn.btn-primary.btn-block{
 
 /*index*/
 .index-content{
-  border: 2px solid #457b9d;
   width: 50%;
-  margin: auto;
   padding: 20px;
   margin-top: 20px;
-  border-radius: 10px;
-  background-color: white;
+  display: flex;;
 }
 .index-user {
   display: flex;

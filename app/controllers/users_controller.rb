@@ -3,19 +3,25 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.id ==current_user.id
     @post = @user.posts.all.order(day: :desc)
+    end
   end
+
   def index
     @user= User.all
   end
+
   def mypage
     redirect_to user_path(current_user)
   end
+
   def edit
     unless @user == current_user
       redirect_to user_path(@user)
     end
   end
+  
   def update
     if current_user.update(user_params)
       redirect_to user_path(current_user)
