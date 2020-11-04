@@ -60,3 +60,4 @@ gem 'devise'
 gem 'cloudinary'
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem "simple_calendar", "~> 2.0"

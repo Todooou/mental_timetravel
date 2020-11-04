@@ -3,16 +3,16 @@
     <div class="index-content">
       <div class="user-info">
         <div class="user-profile">
+          <%= link_to edit_user_registration_path(current_user), class: "hensyu" do%>
           <%= image_tag @user.image_url, class:"icon_image"%>
+          <% end %>
         </div>
         <div class="user-button">
-          <h2><%= @user.username %></h2>
-          思い出数：<%= @user.posts.count %>
+          <%= @user.username %>
         </div>
       </div>
       <div class="user-follow">
         <% if user_signed_in? && @user == current_user %>
-        <%= link_to "プロフィール編集",  edit_user_registration_path(current_user), class: "btn btn-info edit" %>
         <% else %>
         <%= render 'relationships/follow_button', user: @user %>
         <% end %>
@@ -23,31 +23,9 @@
       <div class="each-post">
         <% @post.each do |t| %><br>
         <%= link_to post_path(t.id),class: "posts_day_link" do %>
-        <div class="round">
-        <% if @post.genre == "旅行"%>
-          <style>
-          .round {
-            background-color: pink;
-          }
-          </style>
-
-        <% elsif @post.genre == "遊び"%>
-        <style>
-        .round {
-            background-color: orange;
-          }
-        </style>
-        <% else %>
-        <style>
-        .round {
-            background-color: green;
-          }
-          </style>
-
-        <% end %>
-
+        <div class="row round <%= t.genre %>"%>
           <div class="post_txt">
-            <h4><%= t.day.strftime('%Y/%m/%d') %></h4>
+            <h4><%= t.start_time.strftime('%Y/%m/%d') %></h4>
             <p class="title_txt"><%= t.title %></p>
           </div>
         </div>
@@ -56,5 +34,72 @@
       </div>
     </div>
     <% end %>
+    <div id="map-user"></div>
+    <%= month_calendar events: @post do |date, p| %>
+      <%= date.day %>
+      <% p.each do |post| %>
+        <div>
+          <%= link_to post.title, post_path(post.id) %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
+
+  <style>
+  #map-user {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 100px;
+    border-radius: 10px;
+  }
+  </style>
 </div>
+
+<script>
+  let map
+  let geocoder 
+
+      function initMap() {
+        geocoder = new google.maps.Geocoder()
+        map = new google.maps.Map(
+          document.getElementById('map-user'), {
+            center: {
+              lat: 35.8174453,
+              lng: 139.9188743
+            },
+            zoom: 5,
+          });
+
+        <% @post.each do |t| %>
+      
+        (function(){
+        var iconUrl;
+        if ( <%= t.genre == "嬉しかった" %> ) {
+          iconUrl = "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
+        } else if ( <%= t.genre == "嬉しかった" %> ) {
+          iconUrl = "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+        } else {
+          iconUrl = "http://maps.google.com/mapfiles/ms/micons/red-dot.png"
+        }
+        var marker = new google.maps.Marker({
+          position: {
+            lat: <%= t.latitude %>,
+            lng: <%= t.longitude %>
+          },
+          map: map,
+          icon: iconUrl
+        });
+        marker.addListener('click', function () { // マーカーをクリックしたとき
+          infoWindow.open(map, marker); // 吹き出しの表示
+        });
+       var infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+          content: '<%= link_to t.title, post_path(t.id) %>'
+          // 吹き出しに表示する内容
+        })
+          })();
+      <% end %>
+      }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
+</script>

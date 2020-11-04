@@ -3,31 +3,102 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 /* show */
+.simple-calendar {
+  .day {
+    border: 1px solid #001858!important;
+  }
 
-.user-show-wrapper{
+  .wday-0 {}
+
+  .wday-1 {}
+
+  .wday-2 {}
+
+  .wday-3 {}
+
+  .wday-4 {}
+
+  .wday-5 {}
+
+  .wday-6 {}
+
+  .today {
+    background: pink !important;
+  }
+
+  .past {background: #fff!important;}
+
+  .future {background-color: #fff!important;
+  }
+
+  .start-date {}
+
+  .prev-month {
+    background-color: #FEF6E4;
+  }
+
+  .next-month {}
+
+  .current-month {
+    background-color: #FEF6E4!important;
+  }
+
+  .has-events {}
+
+  th {
+   
+  }
+
+  tr {
+    background-color: #8BD3DD;
+    color:#001858;
+  }
+  a {
+    color: #001858;
+    font-size: 12px;
+  }
+  table {
+    border: 3px solid #001858!important;
+    border-collapse: separate!important;
+    border-radius:10px!important;
+    overflow: hidden!important;
+  }
+  td {
+    border-left: 3px solid #001858!important;
+  }
+  table tbody tr:last-child th,
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+}
+
+
+.user-show-wrapper {
   width: 85%;
   margin: auto;
 }
+
 .profile {
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
-  background-color: rgba(168,218,220,0.2);
+  background-color: rgba(168, 218, 220, 0.2);
   border-radius: 30px;
   padding: 10px;
 }
 
 
 .icon_image {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   //サイズ指定
-  border-radius: 100px;
+  border-radius: 200px;
   //画像を丸くする
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
   margin: 10px;
-  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.08)
+  border: 4px solid #001858;
 }
 
 
@@ -35,6 +106,7 @@
   width: 0%;
   margin: auto;
 }
+
 .user-content {
   width: 60%;
   margin: auto;
@@ -42,21 +114,28 @@
   margin-top: 20px;
   border-radius: 10px;
   text-align: center;
-  
-}
-h2 {
-  font-family: 'Kaiti SC',sans-serif;
-  color: #444;
+
 }
 
-.user-info{
-  width: 80%;
+
+.user-info {
+  width: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 30px auto;
 }
 
+
+.user-profile {
+  font-family: 'Kaiti SC', sans-serif;
+  color: white;
+  font-size: 30px;
+}
+.user-button {
+  font-size: 40px;
+  margin-left: 15px;
+  font-weight: bold;
+  color:#001858;
+}
 .user-edit h3 {
   font-size: 40px;
   text-align: center;
@@ -65,7 +144,7 @@ h2 {
 a.profile {
   margin: 10px;
   height: 15px;
-  background-color: rgba(168,218,220,0.2);
+  background-color: rgba(168, 218, 220, 0.2);
   color: white;
 }
 
@@ -76,65 +155,98 @@ a.profile {
   font-weight: bold;
   text-align: center;
   margin: 10px;
-  font-family: "Kaiti SC", sans-serif;
   display: table;
-  box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  border: 4px solid #001858;
+  border-radius: 10px;
 
   .post_txt {
-    color: white;
+    color: #001858;
   }
+
   &:hover {
-    background-color: rgb(91, 71, 71);
+
+    .post_txt {}
+  }
+
+}
+
+.round:hover {
+  background-color: #fff;
+  transition: 0.5s;
+
+  .post_txt {}
+}
+
+.ごはん {
+  background-color:#fff;
+  &:hover {
+    background-color: #172c66;
     .post_txt {
-      color: #a8dadc;
+      color: white;
     }
   }
 }
-.round:hover {
-  background-color: white;
-  transition: 0.5s;
-  .post_txt {
-  color: #a8dadc;
-  }
+
+.旅行 {
+  background-color: #8BD3DD;
 }
+
+.デート {
+  background-color: #F582AE;
+}
+
+.サークル・部活 {
+  background-color: #F3D2C1;
+}
+.遊び {
+  background-color: #FEF6E4;
+}
+
 
 .post_txt {
   height: 280px;
   border-radius: 300px;
-  color: white;
   letter-spacing: 3px;
   display: table-cell;
   vertical-align: middle;
-  h4,p {
+  h4,
+  p {
     background: (none);
   }
 }
+
 .title_txt {
   font-size: 14px;
 }
+
 .each-post {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
 }
+
 .user-post {
-  margin:  0 auto 80px;
-  border-top: 1px solid #1A6798;
-  border-bottom: 1px solid #1A6798;
-  padding: 30px 0;
+  margin: 0 auto 80px;
+  padding: 70px 0;
+  border-top: 1px solid #001858;
+  border-bottom: 1px solid #001858;
+
 }
+
 
 .user-follow {
   text-align: center;
 }
-.edit{
+
+.edit {
   width: 100%;
-  color:  #FFF;
-  border: 1px solid  #457b9d;
-  box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.06)
+  color: #FFF;
+  box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.06);
+  background-color: none;
 }
+
 .edit1 {
   color: #457b9d;
   background: white;
@@ -142,31 +254,33 @@ a.profile {
 
 
 input.btn.btn-danger.btn-block,
-input.btn.btn-primary.btn-block{
+input.btn.btn-primary.btn-block {
   margin: 20px;
   background-color: #457b9d;
   padding: 10px;
   border: thin;
   border-radius: 20px;
   width: 80px;
-  font-family: 'klee',sans-serif;
+  font-family: 'klee', sans-serif;
   box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.06)
 }
 
-.sign-up-wrapper,.user-edit-content-wrapper{
+.sign-up-wrapper,
+.user-edit-content-wrapper {
   width: 80%;
   height: 100vh;
   margin: auto;
 }
-.sign-up-form,.edit-form {
+
+.sign-up-form,
+.edit-form {
   border: 2px solid #457b9d;
   width: 80%;
   margin: auto;
   padding: 20px;
   margin-top: 20px;
   border-radius: 10px;
-  text-align: center;
-  background-color: rgba(168,218,220,0.2);
+  background-color: rgba(168, 218, 220, 0.2);
 }
 
 
@@ -175,62 +289,73 @@ input.btn.btn-primary.btn-block{
 }
 
 /*index*/
-.index-content{
-  width: 50%;
-  padding: 20px;
-  margin-top: 20px;
-  display: flex;;
+.index-content {
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+ 
 }
+
 .index-user {
   display: flex;
   align-items: center;
 }
-.index-content p{
+
+.index-content p {
   text-align: center;
 }
 
 .user-name {
   font-size: 30px;
   color: #333;
-  font-family: 'Kaiti SC',sans-serif;
+  font-family: 'Kaiti SC', sans-serif;
 }
 
 @media screen and (max-width: 959px) {
+
   /* 959px以下に適用されるCSS（タブレット用） */
   /* new */
-  .edit{
+  .edit {
     width: 100%;
   }
+
   /* new edit */
-  .sign-up-wrapper,.user-edit-content-wrapper{
+  .sign-up-wrapper,
+  .user-edit-content-wrapper {
     width: 100%;
     height: 100vh;
     margin: auto;
-  } 
-  .back{
+  }
+
+  .back {
     text-align: center;
     margin-top: 20px;
   }
 
   /*show*/
-  .user-info{
+  .user-info {
     justify-content: space-between;
     margin: 0;
   }
 
   /*index*/
-  .index-content{
+  .index-content {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 480px) {
+
   /* 480px以下に適用されるCSS（スマホ用） */
   .user-wrapper {
     width: 90%;
   }
-  .edit{
+
+  .edit {
     width: 90%;
   }
+
   .user-post {
     width: 100%;
   }
@@ -239,4 +364,3 @@ input.btn.btn-primary.btn-block{
     margin-right: 20px;
   }
 }
-

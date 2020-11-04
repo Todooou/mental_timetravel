@@ -1,42 +1,61 @@
 
 <div class="wrapper">
-  <p class="post_title">あなたの思い出を可視化しよう</p>
+ <div class="textcontainer">
+    <span class="particletext hearts">
+      <p class="post_title">Post your memories</p>
+    </span>
+  </div>
+
   <div class="form-wrapper">
     <%= form_with( model: @post, local: true ) do |f|  %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
       <%= f.label :title, "タイトル" %>
       <%= f.text_field :title ,class:"form-control"%>
     </div>
-    <div class="form-group">
-      <%= f.label :day, "あの頃" %>
-      <%= f.date_field :day, class:"form-control" %>
+    <div class="group">
+      <%= f.label :genre, "ジャンル" %>
+      <div class="form-group">
+        <%= f.select :genre, ['国内旅行', '海外旅行', 'デート','ごはん','飲み会','サークル・部活'], {include_blank: '選択ボックス'}, class: 'sample' %>
+      </div>
+      <div class="form-group">
+        <%= f.label  "あの頃" %><span class="must"> ※</span>
+        <%= f.date_field :day, class:"form-control" %>
+      </div>
+      <div class="group">
+        <%= f.label  "場所" %><span class="must"> ※</span>
+        <div class="basho-group">
+          <%= f.text_field :address, class:"form-control basho" %>
+          <button type="button" onclick="codeAddress()" class="btn btn-info onclick">検索</button>
+        </div>
+      </div>
+      <div class="map-group">
+        <div id="map"></div>
+      </div>
+      <div class="form-group">
+        <%= f.label :body, "情景" %>
+        <%= f.text_area :body, :size => 140 , class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :youtube_url, "思い出の曲" %>
+        <%= f.text_field :youtube_url, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :image1 %>
+        <%= f.file_field :image1, class:"form-control-file"%>
+        <%= f.file_field :image2, class:"form-control-file"%>
+        <%= f.file_field :image3, class:"form-control-file"%>
+      </div>
+      <div class="field">
+        <%= f.label :tag_name, "タグ" %>
+        <%= f.text_field :tag_name, value:@tag_list %>
+      </div>
+      <div class="submit-group">
+        <%= f.submit "投稿する", class:"btn btn-info submit" %>
+      </div>
+      <% end %>
     </div>
-    <div class="form-group">
-      <%= f.label :address, "場所" %>
-      <%= f.text_field :address, class:"form-control" %>
-    </div>
-    <div class="map-group">
-      <button type="button" onclick="codeAddress()" class="btn btn-info onclick">検索</button>
-      <div id="map"></div>
-    </div>
-    <div class="form-group">
-      <%= f.label :body, "情景" %>
-      <%= f.text_area :body, :size => 140 , class:"form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :youtube, "思い出の曲" %>
-      <%= f.text_field :youtube, class:"form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :picture %>
-      <%= f.file_field :picture, class:"form-control-file"%>
-    </div>
-    <div class="submit-group">
-      <%= f.submit "編集する", class:"btn btn-info submit" %>
-    </div>
-    <% end %>
   </div>
-</div>
 
 <div class="map-content">
   <script>

@@ -1,31 +1,15 @@
-<div class="top-wrapper">
 
-  <div class="title-wrapper">
-    <div class="title-parent">
-      <div class="mental-timetravel">
-        <p class="mental">
-          Mental
-        </p>
-        <p class="timetravel">
-          timetravel
-        </p>
-      </div>
-      <div class="sub-btn">
-        <div class="signup">
-          <p class="sign">
-            Sign
-          </p>
-          <div class="up">
-            up
-          </div>
-        </div>
-      </div>
+<div class="toppage-wrapper">
+<%= render 'layouts/header'%>
+  <div class="top-wrapper">
+    <div class="top-title">
+      Mental <br>Timetravel
     </div>
-  </div>
-  <div class="msg-wrapper">
-    <div class="topmsg">
-      <h3>あなたの思い出を</h3>
-      <h3>可視化しよう。</h3>
+    <div class="top-sub">
+      あなたの思い出を可視化しよう
+    </div>
+    <div class="top-signup">
+      <%= link_to 'Sign Up', new_user_session_path, class:"signup" %>
     </div>
   </div>
 </div>

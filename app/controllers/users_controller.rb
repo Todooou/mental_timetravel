@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user.id ==current_user.id
-    @post = @user.posts.all.order(day: :desc)
+    @post = @user.posts.all.order(start_time: :desc)
     end
   end
 

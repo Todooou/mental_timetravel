@@ -12,10 +12,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id=current_user.id
-    url = params[:post][:youtube]   
+    url = params[:post][:youtube_url]   
         url = url.last(11)
-        @post.youtube = url
+        @post.youtube_url = url
+    tag_list = params[:post][:tag_name].split(/[[:blank:]]+/).select(&:present?)
       if @post.save
+        @post.save_posts(tag_list)
         redirect_to :action => "show", :id => @post.id
       else
         render :new
@@ -23,14 +25,20 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
     results = Geocoder.search(@post.address)
     @latlng = results.first.coordinates
+    @tag_list = @post.tags
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:tag_name).join(" ")
   end
   
   def update
+    @post = Post.find(post_params)
+    tag_list = params[:post][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @post.update(post_params)
       redirect_to :action => "show", :id => @post.id
     else
@@ -45,7 +53,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :day, :youtube, :address, :latitude, :longitude, :user_id, :picture)
+    params.require(:post).permit(:title, :body, :day, :youtube_url, :address, :latitude, :longitude, :user_id, :genre, :start_time)
   end
 
   def get_my_post
