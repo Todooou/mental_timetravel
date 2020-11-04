@@ -22,9 +22,6 @@
 
   .wday-6 {}
 
-  .today {
-    background: pink !important;
-  }
 
   .past {background: #fff!important;}
 
@@ -37,10 +34,14 @@
     background-color: #FEF6E4;
   }
 
+
   .next-month {}
 
   .current-month {
     background-color: #FEF6E4!important;
+  }
+  .today {
+    background: pink !important;
   }
 
   .has-events {}

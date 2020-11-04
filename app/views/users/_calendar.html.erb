@@ -1,0 +1,8 @@
+<%= month_calendar events: @post, previous_link: users_ajax_previous_link, next_link: users_ajax_next_link do |date, p| %>
+<%= date.day %>
+<% p.each do |post| %>
+<div>
+  <%= link_to post.title, post_path(post.id) %>
+</div>
+<% end %>
+<% end %>

@@ -34,16 +34,10 @@
       </div>
     </div>
     <% end %>
+         <div id="events_calendar">
+        <%= render partial: "calendar", locals: {events: @post} %>
+      </div>
     <div id="map-user"></div>
-    <%= month_calendar events: @post do |date, p| %>
-      <%= date.day %>
-      <% p.each do |post| %>
-        <div>
-          <%= link_to post.title, post_path(post.id) %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
 
   <style>
   #map-user {
