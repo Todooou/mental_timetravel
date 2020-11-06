@@ -30,7 +30,8 @@
     <nav>
       <div class="inner">
         <ul>
-          <li><%= link_to "Top", root_path%></li>
+          <li><%= link_to 'Top', root_path%></li>
+          <li><%= link_to 'Post your memories', new_post_path%></li>
           <li> <%= link_to 'Mypage', mypage_path %></li>
           <li> <%= link_to 'Search', users_path %></li>
           <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>

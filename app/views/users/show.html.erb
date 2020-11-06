@@ -10,6 +10,18 @@
         <div class="user-button">
           <%= @user.username %>
         </div>
+        <div class="count">
+          <h6>post</h6>
+          <h2><%= @post.count %></h2>
+        </div>
+        <div class="count">
+          <h6>follow</h6>
+          <h2><%= @followings %></h2>
+        </div>
+        <div class="count">
+          <h6>follower</h6>
+          <h2><%= @followers %></h2>
+        </div>
       </div>
       <div class="user-follow">
         <% if user_signed_in? && @user == current_user %>
@@ -65,7 +77,6 @@
             },
             zoom: 5,
           });
-
 
 
         <% @post.each do |t| %>

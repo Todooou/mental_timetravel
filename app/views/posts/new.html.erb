@@ -26,7 +26,7 @@
           <%= f.label  "場所" %><span class="must"> ※</span>
           <div class="basho-group">
             <%= f.text_field :address, class:"form-control basho" %>
-            <button type="button" onclick="codeAddress()" class="btn btn-info onclick">検索</button>
+            <button type="button" onclick="codeAddress()" class="btn onclick">search</button>
           </div>
         </div>
         <div class="map-group">
@@ -51,7 +51,7 @@
           <%= f.text_field :tag_name , class:"form-control"%>
         </div>
         <div class="submit-group">
-          <%= f.submit "投稿する", class:"btn btn-info submit" %>
+          <%= f.submit "Post", class:"btn  submit" %>
         </div>
         <% end %>
       </div>
