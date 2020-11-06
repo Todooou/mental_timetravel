@@ -168,6 +168,7 @@ GEM
       oauth2 (~> 1.4)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (4.3.6)
       nio4r (~> 2.0)
@@ -295,6 +296,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   sass-rails (>= 6)
@@ -302,7 +304,7 @@ DEPENDENCIES
   simple_calendar (~> 2.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
+  sqlite3
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
