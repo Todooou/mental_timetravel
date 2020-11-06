@@ -1,15 +1,19 @@
-
 <div class="toppage-wrapper">
-<%= render 'layouts/header'%>
-  <div class="top-wrapper">
-    <div class="top-title">
-      Mental <br>Timetravel
+  <%= render 'layouts/header'%>
+  <div class="second-wrapper">
+    <div class="-wrapprer">
+      <i class="fas fa-globe-asia awesome"></i>
     </div>
-    <div class="top-sub">
-      あなたの思い出を可視化しよう
-    </div>
-    <div class="top-signup">
-      <%= link_to 'Sign Up', new_user_session_path, class:"signup" %>
+    <div class="top-wrapper">
+      <div class="top title1">
+        <span class="Mdayo">M</span>ental
+      </div>
+      <div class="top title2">
+        Timetravel
+      </div>
+      <div>
+      <%= link_to "Sign Up" ,  new_user_registration_path, class:"signup" %>
+      </div>
     </div>
   </div>
 </div>

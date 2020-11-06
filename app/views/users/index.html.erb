@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <p class="post_title">ユーザー一覧</p>
+  <p class="post_title">User all</p>
   <div class="index-content">
     <% @user.each do |user| %>
     <div class="index-user">
@@ -9,6 +9,7 @@
       </div>
       <div class="user-name">
         <%= user.username%>
+        <%#= render "relationships/follow_button", user: @user %>
       </div>
       <% end %>
     </div>
@@ -16,5 +17,3 @@
   </div>
 </div>
 
-
-<%#= render "relationships/follow_button", user: @user %>

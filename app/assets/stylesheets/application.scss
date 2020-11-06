@@ -14,6 +14,12 @@
  *= require_self
  */
 @import "simple_calendar";
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
 
  * { 
   margin: 0;
@@ -31,10 +37,7 @@
   margin: 0 auto;
   height: 100vh;
 }
-header {
-  display: inline-block;
-  background: none;
-}
+
 
 nav {
   display: block;
@@ -58,6 +61,7 @@ nav {
 }
 nav .inner {
   padding: 25px;
+  font-family: 'Dosis', sans-serif;
 }
 nav .inner ul {
   list-style: none;
@@ -67,7 +71,7 @@ nav .inner ul {
 nav .inner ul li {
   position: relative;
   margin: 0;
-  border-bottom: 3px solid #1A6798;
+  border-bottom: 3px solid #001858;
 }
 nav .inner ul li a {
   display: block;
@@ -107,9 +111,9 @@ nav .inner ul li a:hover {
   left: 0;
   width: 30px;
   height: 4px;
-  background-color: white;
+  background-color: #001858;
   transition: all .5s;
-  color: white;
+  color: #001858;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .toggle_btn span:nth-child(1) {
@@ -122,7 +126,7 @@ nav .inner ul li a:hover {
   bottom: 1px;
 }
 .open .toggle_btn span {
-  background-color: #fff;
+  background-color: white;
 }
 .open .toggle_btn span:nth-child(1) {
   -webkit-transform: translateY(10px) rotate(-315deg);
@@ -168,7 +172,9 @@ main h1 {
 /*============
 body
 =============*/
+
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Dosis', sans-serif, 'Open Sans', sans-serif;
   font-weight: 400;
+  letter-spacing: 1px;
 }
