@@ -61,3 +61,6 @@ gem 'cloudinary'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem "simple_calendar", "~> 2.0"
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'

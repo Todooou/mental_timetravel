@@ -27,10 +27,14 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   }
 
   header {
-    position: relative;
+    position: absolute;
+    top: 10px;
+    left: 10px;
   }
-
-
+.head {
+  font-size: 30px;
+  color: #172C66;
+}
 
 .wrapper {
   width: 85%;

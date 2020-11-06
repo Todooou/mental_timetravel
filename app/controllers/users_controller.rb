@@ -3,11 +3,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user.id ==current_user.id
+    #if @user.id ==current_user.id
     @post = @user.posts.all.order(start_time: :desc)
+    #end
+
     @followers = @user.followers.count
     @followings = @user.followings.count
-    end
 
   end
 

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:top]
   before_action :get_my_post, only: [:show, :edit, :update, :destroy]
 
   def top
