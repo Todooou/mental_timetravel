@@ -28,7 +28,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
 
-
   def facebook
     callback_for(:facebook)
   end

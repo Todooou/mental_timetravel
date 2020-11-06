@@ -27,7 +27,6 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
-
   def self.without_sns_data(auth)
     user = User.where(email: auth.info.email).first
 
@@ -39,7 +38,7 @@ class User < ApplicationRecord
         )
       else
         user = User.new(
-          username: auth.info.username,
+          username: auth.info.name,
           email: auth.info.email,
         )
         sns = SnsCredential.new(
@@ -50,18 +49,18 @@ class User < ApplicationRecord
       return { user: user ,sns: sns}
     end
 
-  def self.with_sns_data(auth, snscredential)
+   def self.with_sns_data(auth, snscredential)
     user = User.where(id: snscredential.user_id).first
     unless user.present?
       user = User.new(
-        username: auth.info.username,
+        username: auth.info.name,
         email: auth.info.email,
       )
     end
     return {user: user}
-  end
+   end
 
-  def self.find_oauth(auth)
+   def self.find_oauth(auth)
     uid = auth.uid
     provider = auth.provider
     snscredential = SnsCredential.where(uid: uid, provider: provider).first
