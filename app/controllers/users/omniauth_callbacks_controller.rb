@@ -28,29 +28,31 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
 
-  def facebook
-    callback_for(:facebook)
-  end
-
+  # callback for facebook
   def google_oauth2
-    callback_for(:google)
-  end
+    # You need to implement the method below in your model (e.g. app/models/user.rb)
+    @user = User.from_omniauth(request.env['omniauth.auth'])
 
-
-  def callback_for(provider)
-    @omniauth = request.env['omniauth.auth']
-    info = User.find_oauth(@omniauth)
-    @user = info[:user]
-    if @user.persisted? 
+    if @user.persisted?
+      flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
       sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-    else 
-      @sns = info[:sns]
-      render template: "devise/registrations/new" 
+    else
+      session['devise.google_data'] = request.env['omniauth.auth'].except('extra') # Removing extra as it can overflow some session stores
+      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
     end
   end
-
-  def failure
-    redirect_to root_path and return
+    def self.from_omniauth(access_token)
+      data = access_token.info
+      user = User.where(email: data['email']).first
+  
+      # Uncomment the section below if you want users to be created if they don't exist
+      # unless user
+      #     user = User.create(name: data['name'],
+      #        email: data['email'],
+      #        password: Devise.friendly_token[0,20]
+      #     )
+      # end
+      user
   end
+
 end

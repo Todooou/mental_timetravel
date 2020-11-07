@@ -28,13 +28,10 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "form-control"%>
       </div>
 
-      <div class="actions">
+      <dom class="actions">
         <%= f.submit "Sign up", class:"btn btn-info signup" %>
-      </div>
+      </dom>
     <% end %>
     <%= render "users/shared/links" %>
-  </div>
+  </dom
 </div>
-
-<%= link_to user_facebook_omniauth_authorize_path  %>
-<%= link_to user_google_oauth2_omniauth_authorize_path %>
