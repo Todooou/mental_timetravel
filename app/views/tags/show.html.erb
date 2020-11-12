@@ -1,37 +1,13 @@
-
-<h2>タグ一覧</h2>
-<% @tag_list.each do |list| %>
-  <%= link_to list.tag_name, user_tag_path(user_id: current_user.id, id: list.id) %><br>
-<% end %>
-
-
 <div class="wrapper">
   <div class="user-show-wrapper">
-    <div class="index-content">
-      <div class="user-info">
-        <div class="user-profile">
-          <%= link_to edit_user_registration_path(current_user), class: "hensyu" do%>
-          <%= image_tag @user.image_url, class:"icon_image"%>
-          <% end %>
-        </div>
-        <div class="user-button">
-          <h2><%= @user.username %></h2>
-        </div>
-      </div>
-      <div class="user-follow">
-        <% if user_signed_in? && @user == current_user %>
-        <% else %>
-        <%= render 'relationships/follow_button', user: @user %>
-        <% end %>
-      </div>
-    </div>
-    <div id="map-user"></div>
+  <h3>#<%= @tag.tag_name%></h3>
     <% if @post %>
     <div class="user-post">
+    
       <div class="each-post">
         <% @post.each do |t| %><br>
         <%= link_to post_path(t.id),class: "posts_day_link" do %>
-        <div class="round <%= t.genre %>"%>
+        <div class="round <%= t.genre %>1"%>
           <div class="post_txt">
             <h4><%= t.start_time.strftime('%Y/%m/%d') %></h4>
             <p class="title_txt"><%= t.title %></p>
@@ -41,6 +17,7 @@
         <% end %>
       </div>
     </div>
+    <div id="map-user"></div>
     <% end %>
     <%= month_calendar events: @post do |date, p| %>
       <%= date.day %>

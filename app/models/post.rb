@@ -4,7 +4,7 @@ class Post < ApplicationRecord
     mount_uploader :image3, PictureUploader
     validates :start_time, presence: true
     validates :address, presence: true
-    validates :image1, presence: true
+    validates :image1, presence:true
     geocoded_by :address
     after_validation :geocode, if: :address_changed?
     belongs_to :user

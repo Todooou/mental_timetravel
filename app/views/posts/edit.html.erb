@@ -1,6 +1,5 @@
 
 <div class="wrapper">
-  <%= render 'layouts/header' %>
  <div class="textcontainer">
     <span class="particletext hearts">
       <p class="post_title">Post your memories</p>
@@ -42,7 +41,7 @@
         <%= f.text_field :youtube_url, class:"form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :image1 %>
+        <%= f.label :image1 %><span class="must"> ※1枚以上</span>
         <%= f.file_field :image1, class:"form-control-file"%>
         <%= f.file_field :image2, class:"form-control-file"%>
         <%= f.file_field :image3, class:"form-control-file"%>
@@ -52,7 +51,7 @@
         <%= f.text_field :tag_name, value:@tag_list %>
       </div>
       <div class="submit-group">
-        <%= f.submit "投稿する", class:"btn btn-info submit" %>
+        <%= f.submit "編集する", class:"btn btn-info submit" %>
       </div>
       <% end %>
     </div>

@@ -36,12 +36,13 @@ class PostsController < ApplicationController
   end
   
   def update
-    @post = Post.find(post_params)
+    @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @post.update(post_params)
+      @post.save_posts(tag_list)
       redirect_to :action => "show", :id => @post.id
     else
-      redirect_to :action => "new"
+      render :new
     end
   end
 

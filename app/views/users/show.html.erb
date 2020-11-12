@@ -29,8 +29,7 @@
               </div>
             </div>
             <div class="user-follow">
-              <% if user_signed_in? && @user == current_user %>
-              <% else %>
+              <% unless user_signed_in? && @user == current_user %>
               <%= render 'relationships/follow_button', user: @user %>
               <% end %>
             </div>
