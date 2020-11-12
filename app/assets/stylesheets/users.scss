@@ -5,8 +5,7 @@
 /* show */
 .simple-calendar {
   .day {
-   
-    font-weight: bold!important;
+    font-weight: bold !important;
   }
 
   .wday-0 {
@@ -51,13 +50,12 @@
   .current-month {
     background-color: #fef6e4 !important;
   }
- 
 
   .has-events {
   }
 
   th {
-    border: none!important;
+    border: none !important;
   }
 
   tr {
@@ -69,29 +67,28 @@
     font-size: 12px;
   }
   table {
-    border: 3px solid #001858 !important;
+    border: 2.5px solid #001858 !important;
     border-collapse: separate !important;
     border-radius: 10px !important;
     overflow: hidden !important;
   }
   td {
-    
   }
   table tbody tr:last-child th,
   table tbody tr:last-child td {
     border-bottom: none;
   }
   .table thead th {
-    border-bottom: 2px solid #000!important;
+    border-bottom: 2px solid #000 !important;
   }
 
   .today {
-    background: #F582AE !important;
+    background: #f582ae !important;
   }
 }
 
 .user-show-wrapper {
-  width: 90%;
+  width: 95%;
   margin: auto;
 }
 
@@ -105,10 +102,10 @@
 }
 
 .icon_image {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   //サイズ指定
-  border-radius: 200px;
+  border-radius: 180px;
   //画像を丸くする
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
@@ -130,11 +127,26 @@
 }
 
 .user-info {
-  width: 50%;
-  display: flex;
+  width: 100%;
   align-items: center;
+  display: flex;
 }
-
+.user-follow {
+  
+}
+.followbtn{
+  background-color: #F582AE;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100px;
+  border: none;
+  letter-spacing: 1px;
+  margin: 15px;
+}
+.name-wrapper,
+.follow-count{
+  display: flex;
+}
 .user-profile {
   font-family: "Kaiti SC", sans-serif;
   color: white;
@@ -146,6 +158,7 @@
   margin-right: 40px;
   font-weight: bold;
   color: #001858;
+
 }
 .user-edit h3 {
   font-size: 40px;
@@ -160,14 +173,14 @@ a.profile {
 }
 
 .round {
-  width: 280px;
-  height: 280px;
+  width: 240px;
+  height: 240px;
   font-weight: bold;
   text-align: center;
   margin: 10px;
   display: table;
   overflow: hidden;
-  border: 4px solid #001858;
+  border: 3px solid #001858;
   border-radius: 10px;
 
   .post_txt {
@@ -188,7 +201,7 @@ a.profile {
   }
 }
 
-.ごはん {
+.ごはん1 {
   background-color: #172c66;
   .post_txt {
     color: white;
@@ -196,29 +209,29 @@ a.profile {
   &:hover {
     background-color: white;
     .post_txt {
-      color:#172c66;
+      color: #172c66;
     }
   }
 }
 
-.旅行 {
+.旅行1 {
   background-color: #8bd3dd;
 }
 
-.デート {
+.デート1 {
   background-color: #f582ae;
 }
 
-.サークル・部活 {
+.サークル・部活1 {
   background-color: #f3d2c1;
 }
-.遊び {
+.遊び1 {
   background-color: #fef6e4;
 }
 
 .post_txt {
-  height: 280px;
-  border-radius: 300px;
+  height: 240px;
+  border-radius: 10px;
   letter-spacing: 3px;
   display: table-cell;
   vertical-align: middle;
@@ -275,31 +288,55 @@ input.btn.btn-primary.btn-block {
   font-family: "klee", sans-serif;
 }
 
-.sign-up-wrapper,
-.user-edit-content-wrapper {
+.sign-up-wrapper {
   width: 100%;
   height: 100vh;
   margin: auto;
-  background-color: #8BD3DD;
+  background-color: #8bd3dd;
+  position: relative;
 }
-
-.sign-up-form,
-.edit-form {
-  width: 80%;
+.user-edit-content-wrapper{
+  width: 100%;
   margin: auto;
-  padding: 20px;
-  margin-top: 50px;
+  background-color: #8bd3dd;
+
+}
+.edit-form {
   border-radius: 10px;
   background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.sign-up-form{
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 
 .edituser {
   text-align: center;
 }
 
+.top-field {
+  color: #001858;
+  padding: 30px;
+}
 .count {
   text-align: center;
-  margin: 10px;
+  margin: 15px 20px;
+}
+.follow-corner {
+  display:flex;
+  margin: 0 auto;
+  justify-content: space-around
 }
 
 /*index*/
@@ -307,22 +344,30 @@ input.btn.btn-primary.btn-block {
   width: 100%;
   margin-top: 40px;
   margin-bottom: 40px;
-  display: flex;
-}
-
-.index-user {
-  display: flex;
-  align-items: center;
-}
-
-.index-content p {
-  text-align: center;
 }
 
 .user-name {
-  font-size: 30px;
+  font-size: 20px;
+  color: #001858;
+  display: flex;
+  margin: 30px 20px;
+}
+
+
+.icon {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 100px;
+}
+.username {
+  line-height: 100px;
   color: #001858;
 }
+
+
+/*LOG IN*/
+
 
 @media screen and (max-width: 959px) {
   /* 959px以下に適用されるCSS（タブレット用） */
@@ -330,18 +375,18 @@ input.btn.btn-primary.btn-block {
   .edit {
     width: 100%;
   }
-
   /* new edit */
-  .sign-up-wrapper,
-  .user-edit-content-wrapper {
+  .sign-up-wrapper{
     width: 100%;
     height: 100vh;
     margin: auto;
   }
+  .user-edit-content-wrapper {
+    width: 100%;
+  }
 
   .back {
     text-align: center;
-    margin-top: 20px;
   }
 
   /*show*/
@@ -349,18 +394,62 @@ input.btn.btn-primary.btn-block {
     justify-content: space-between;
     margin: 0;
   }
+  .round {
+    width: 150px;
+    height: 150px;
+  }
+  .post_txt {
+    height: 150px;
+    border-radius: 20px;
+    letter-spacing: 3px;
+    display: table-cell;
+    vertical-align: middle;
+    h4,
+    p {
+      background: (none);
+    }
+    h4 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+  .user-post {
+    height: 500px;
+  }
+  a.calendar-title {
+    font-size: 8px;
+    letter-spacing: 0px;
+  }
+  .user-info {
+    display: flex;
+  }
+  .user-name h3 {
+    font-size: 20px;
+  }
+  .follow-count h6{
+    font-size: 15px;
+  }
+  .follow-count {
+    display: block;
+  }
+  .followbtn {
+    margin: 10px;
+    padding: 15px;
+    width: 200px;
+  }
 
   /*index*/
   .index-content {
     width: 100%;
+    margin-top: 0px;
   }
 }
 
 @media screen and (max-width: 480px) {
   /* 480px以下に適用されるCSS（スマホ用） */
-  .user-show-wrapper {
-    width: 100%;
-  }
+
   .user-wrapper {
     width: 90%;
   }
@@ -373,10 +462,63 @@ input.btn.btn-primary.btn-block {
     width: 100%;
   }
 
-  h3 {
-    margin-right: 20px;
-  }
+
+
+  /*show*/
   .wrapper {
-    width: 97%;
+    width: 98%;
+  }
+  .user-show-wrapper {
+    width: 98%;
+  }
+
+  .round {
+    width: 130px;
+    height: 130px;
+    margin: 5px;
+  }
+  .post_txt {
+    height: 130px;
+    padding: 10px;
+    h4 {
+      font-size: 10px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+  a.calendar-title {
+    font-size: 5px;
+  }
+  .icon_image {
+    width: 80px;
+    height: 80px;
+  }
+  .follow-wrapper h3,
+  .count h3, 
+  .count h6 {
+    font-size: 13px;
+  }
+  .count {
+    margin: 10px 15px;
+  }
+  .followbtn {
+    padding: 10px;
+    font-size: 10px;
+    width: 80%;
+  }
+  .follow-wrapper{
+    width: 80%;
+    text-align: center;
+    padding: 15px;
+  }
+  .name-wrapper {
+    width: 20%;
+  }
+  .follow-corner {
+    margin: auto;
+  }
+  .user-info {
+    margin-top: 30px;
   }
 }

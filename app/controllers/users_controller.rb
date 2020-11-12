@@ -6,10 +6,8 @@ class UsersController < ApplicationController
     #if @user.id ==current_user.id
     @post = @user.posts.all.order(start_time: :desc)
     #end
-
     @followers = @user.followers.count
     @followings = @user.followings.count
-
   end
 
   def index

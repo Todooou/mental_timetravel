@@ -2,11 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-
-
 /* top */
-
 
 .render {
   position: absolute;
@@ -19,14 +15,13 @@
   margin-right: 3px;
 }
 .toppage-wrapper {
-  background-color: #FEF6E4;
-  color: #172C66;
+  background-color: #fef6e4;
+  color: #172c66;
   height: 100vh;
   position: relative;
   width: 100%;
   position: fixed;
-  font-family: 'Dosis', sans-serif;
-  
+  font-family: "Dosis", sans-serif;
 }
 .second-wrapper {
   display: flex;
@@ -40,10 +35,9 @@
   transform: translateY(-50%) translateX(-50%);
   font-weight: bold;
 }
-.top-wrapper{
+.top-wrapper {
   width: 70%;
   padding-left: 70px;
-  
 }
 
 .right-wrapper {
@@ -51,23 +45,21 @@
   height: 100vh;
 }
 
-
 .awesome {
-  font-size: 400px;
+  font-size: 300px;
 }
-
 
 .signup {
   display: inline-block;
   width: 100%;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   padding: 20px;
   letter-spacing: 2px;
-  color: #FEF6E4;
+  color: #fef6e4;
   border-radius: 10px;
   font-weight: bold;
-  background-color: #172C66;
+  background-color: #172c66;
   &:hover {
     text-decoration: none;
   }
@@ -76,25 +68,24 @@
 .first {
   margin-top: 40px;
   margin-bottom: 10px;
-    &:hover {
-      color: #F582AE;;
-     
+  &:hover {
+    color: #f582ae;
   }
 }
 
 .second {
   &:hover {
-    color: #8BD3DD;
-    }
+    color: #8bd3dd;
+  }
 }
 
 .Mdayo {
-  color: #F582AE;
+  color: #f582ae;
   font-size: 120px;
 }
 
-.top{
-  letter-spacing: 4px;
+.top {
+  letter-spacing: 5px;
   margin: 0 auto;
 }
 
@@ -107,18 +98,10 @@
   font-size: 50px;
 }
 
-.topbtn {
-
-}
-
-
-
-
-
 /* new */
 
 .new-wrapper {
-  background-color: #F3D2C1;
+  background-color: #f3d2c1;
   width: 100%;
   min-height: 280vh;
   background-attachment: fixed;
@@ -133,20 +116,19 @@
   margin-top: 20px;
   margin-bottom: 50px;
   color: black;
-  background-color: #FEF6E4;
+  background-color: #fef6e4;
   border-radius: 5px;
 }
 
 .form-group {
-  margin: 0  auto 50px;
-
+  margin: 0 auto 50px;
 }
 .form-control {
   width: 100%;
-  margin:0 auto;
+  margin: 0 auto;
 }
 .basho-group {
-  display:flex;
+  display: flex;
 }
 .basho {
   width: 90%;
@@ -162,15 +144,14 @@
   font-size: 12px;
 }
 .field_with_errors {
-  background-color: rgba(230,57,70,0.4);
+  background-color: rgba(230, 57, 70, 0.4);
   padding: 3px 0;
-} 
-.onclick {
-  width:20%;
-  color: #FEF6E4;
-  background-color: #F582AE;
 }
-
+.onclick {
+  width: 20%;
+  color: #fef6e4;
+  background-color: #f582ae;
+}
 
 textarea#post_body {
   height: 100px;
@@ -183,11 +164,10 @@ textarea#post_body {
   text-decoration: none;
 }
 
-
 .content-wrapper {
-  text-align: center;
   width: 100%;
-  margin: 55px 0;
+  margin: 0;
+  background-color: #fef6e4;
 }
 .map-group {
   height: 350px;
@@ -201,34 +181,28 @@ textarea#post_body {
 }
 .submit {
   width: 100%;
-  background-color: #F582AE;
+  background-color: #f582ae;
   border: none;
-  color: #FEF6E4;
+  color: #fef6e4;
   &hover {
-  background-color: #F582AE;
-
+    background-color: #f582ae;
   }
 }
 
 /* show */
 
-.post-content h3 {
-  color: #444;
-  margin-bottom: 20px;
-}
-
 .post_title {
   animation-duration: 2s;
-  color: #172C66;
+  color: #172c66;
   text-align: center;
   font-size: 40px;
   padding-top: 20px;
-
 }
 
 iframe {
-  width: 90%;
+  width: 100%;
   height: 300px;
+  border-radius: 10px;
 }
 img {
   width: 90%;
@@ -242,6 +216,38 @@ img {
   margin-top: 20px;
 }
 
+.start {
+  width: 100%;
+  position: relative;
+}
+.end {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 180px;
+}
+.post-day {
+  width: 90%;
+  padding: 30%  10px 30% 10px;
+  border: 3px solid #172c66;
+  border-radius: 10px;
+  text-align: center;
+  color: #172c66;
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-day p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.day-inner h6 {
+  font-weight: bold;
+}
 #map,
 #pano {
   float: left;
@@ -249,22 +255,12 @@ img {
   width: 100%;
 }
 .post-content {
-  border: 2px solid #457b9d;
-  width: 50%;
+  width: 80%;
   margin: auto;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
+  padding: 100px 20px;
   margin-bottom: 20px;
-  background-color: rgba(168, 218, 220, 0.2);
   margin: 0 auto;
   color: #333;
-}
-.post-content h3 {
-  margin: 20px auto 10px;
-}
-.post-content p {
-  margin-bottom: 30px;
 }
 
 .text-content {
@@ -273,8 +269,137 @@ img {
   margin-bottom: 50px;
 }
 
+.post-top {
+  display: flex;
+  height: 430px;
+  position: relative;
+}
+.post-middle {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 70px 0;
+  padding: 50px;
+}
+.post-middle h6 {
+  margin-top: 30px;
+}
+.post-bottom {
+  width: 100%;
+}
+
+.showimg {
+  height: 430px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dayarea {
+  width: 30%;
+  position: relative;
+}
+.carousel {
+  width: 70%;
+  margin-left: 30px;
+  border-radius: 10px;
+  height: 430px;
+}
+.showtag {
+  width: 90%;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  letter-spacing: 2px;
+  border-radius: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 3px solid #001858;
+  color: #001858;
+  margin-top: 30px;
+}
+.genre {
+}
+.local {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.tag-list {
+  padding: 8px;
+  border-radius: 10px;
+  color: #001858;
+  background-color: #fef6e4;
+  border: 3px solid #001858;
+  &:hover {
+    text-decoration: none;
+    background-color: #f582ae;
+    color: #001858;
+  }
+}
+
+.ごはん {
+  background-color: #172c66;
+  color: white;
+}
+.旅行 {
+  background-color: #8bd3dd;
+}
+
+.デート {
+  background-color: #f582ae;
+}
+
+.サークル・部活 {
+  background-color: #f3d2c1;
+}
+.遊び {
+  background-color: #fef6e4;
+}
+
+.map-content {
+  width: 100%;
+  margin-top: 70px;
+}
+.row {
+  margin: 0;
+}
+
+.showbtn {
+  border: 3px solid #001858;
+  border-radius: 10px;
+  color: #001858
+}
+.back {
+  background-color: #8bd3dd;
+}
+.editbtn {
+  background-color: #f3d2c1;
+}
+
+
+
 @media screen and (max-width: 959px) {
-  /* 959px以下に適用されるCSS（タブレット用） */
+  /* 959px以下に適用されるCSS
+  （タブレット用） */
+
+  /*top*/
+  .awesome {
+    font-size: 200px;
+  }
+  .top-wrapper {
+    padding-left: 30px;
+  }
+  .top {
+    font-size: 40px;
+  }
+  .signup {
+    padding: 10px;
+  }
+  .first {
+    margin-top: 20px;
+  }
   /* new */
   .wrapper {
     width: 95%;
@@ -288,9 +413,71 @@ img {
   img {
     width: 100%;
   }
+
+  /*show*/
+  .post-content {
+    width: 90%;
+  }
+  .post-day {
+    font-size: 20px;
+    width: 100%;
+  }
+  .showtag {
+    width: 100%;
+    font-size: 15px;
+    margin: 0;
+  }
+  .bodycontents {
+    font-size: 13px;
+  }
+  
+
+
 }
+
 @media screen and (max-width: 480px) {
   /* 480px以下に適用されるCSS（スマホ用） */
+
+  /*top*/
+  .second-wrapper {
+    display: block;
+    width: 90%;
+    text-align: center;
+  }
+  .awesome {
+    font-size: 150px;
+  }
+  .top-wrapper {
+    padding: 0;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .top {
+    font-size: 20px;
+  }
+  .signup {
+    padding: 5px;
+  }
+  .first {
+    margin-top: 20px;
+  }
+  .title1 {
+    height: 60px;
+    font-size: 30px;
+  }
+  .title2 {
+    font-size: 30px;
+  }
+  .Mdayo {
+    font-size: 40px;
+  }
+  .topbtn {
+    margin-top: 20px;
+  }
+  .signup {
+    padding: 15px;
+  }
+
   .post-content {
     width: 90%;
   }
@@ -304,5 +491,80 @@ img {
   }
   .must {
     font-size: 10px;
+  }
+
+  /*show*/
+  .post-content {
+    padding: 10px;
+    width: 95%;
+  }
+  .post-top {
+    display: block;
+    margin-top: 100px;
+    height: 400px;
+  }
+  .carousel {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+  }
+  .dayarea {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    margin-bottom: 40px;
+  }
+  .start {
+    width:55%;
+    height: 100%;
+  }
+  .end {
+    width: 45%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    position: relative;
+    margin-left: 10px;
+  }
+  .genre,
+  .local {
+    margin-top: 0;
+    width: 100%;
+    font-size: 12px;
+  }
+  .local {
+    margin-top:30px;
+  }
+  .showtag {
+    margin:0;
+    padding: 23px 10px;
+  }
+  .d-block {
+    height: 200px;
+  }
+  .post-day {
+    font-size: 20px;
+    width: 160px;
+    height: 160px;
+    margin: 0;
+  }
+  .post-middle {
+    padding: 25px;
+    margin: 40px 0;
+  }
+  .post-link {
+    margin-bottom: 30px;
+  }
+  .map-content {
+    margin: 40px 0;
+  }
+
+  /*new*/
+  .form-wrapper{
+    width: 95%;
+    padding: 30px;
+  }
+  .form-group {
+    width: 90%;
   }
 }

@@ -88,10 +88,15 @@ nav .inner ul li a {
 nav .inner ul li a:hover {
   background: #e4e4e4;
 }
+
+
 @media screen and (max-width: 767px) {
   nav {
     left: -220px;
     width: 220px;
+  }
+  .wrapper {
+    width: 90%;
   }
 }
 /*============
@@ -181,4 +186,12 @@ body {
   font-family: 'Dosis', sans-serif, 'Open Sans', sans-serif;
   font-weight: 400;
   letter-spacing: 1px;
+}
+
+
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+  }
 }

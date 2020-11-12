@@ -4,6 +4,7 @@ class Post < ApplicationRecord
     mount_uploader :image3, PictureUploader
     validates :start_time, presence: true
     validates :address, presence: true
+    validates :image1, presence: true
     geocoded_by :address
     after_validation :geocode, if: :address_changed?
     belongs_to :user
@@ -14,7 +15,7 @@ class Post < ApplicationRecord
       current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
       old_tags = current_tags - sent_tags
       new_tags = sent_tags - current_tags
-  
+
         old_tags.each do |old_name|
           self.tags.delete Tag.find_by(tag_name: old_name)
         end

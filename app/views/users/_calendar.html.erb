@@ -2,7 +2,7 @@
 <%= date.day %>
 <% p.each do |post| %>
 <div>
-  <%= link_to post.title, post_path(post.id) %>
+  <%= link_to post.title, post_path(post.id),class:"calendar-title" %>
 </div>
 <% end %>
 <% end %>

@@ -1,19 +1,17 @@
 <div class="wrapper">
   <p class="post_title">User all</p>
   <div class="index-content">
+
     <% @user.each do |user| %>
-    <div class="index-user">
-      <div class="image-content">
-        <%= link_to user_path(user.id) do %>
-        <%= image_tag user.image_url, class:"icon_image" %>
-      </div>
-      <div class="user-name">
-        <%= user.username%>
-        <%#= render "relationships/follow_button", user: @user %>
-      </div>
+    <div class="user-name">
+      <div><%= link_to user_path(user.id) do %>
+      <%= image_tag user.image_url, class:"icon" %></div> 
+      <div class="username"><%= user.username%></div>
       <% end %>
     </div>
-    <% end %>
+  <% end %>
+
+
+
   </div>
 </div>
-

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&family=Montserrat:wght@600;700&family=Poppins&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_pack_tag 'application' %>
 </head>
@@ -25,17 +26,38 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
   </script>
 
-<header> <i class="fas fa-globe-asia head"></i> </header>
-  <div id="navArea">
+<% if user_signed_in? %>
+<header> 
+    <%= link_to user_path(current_user.id) do %>
+  <i class="fas fa-globe-asia head"></i>
+  <% end %>
+</header>
+<% end %>
 
+  <div id="navArea">
     <nav>
       <div class="inner">
         <ul>
-          <li><%= link_to 'Top', root_path%></li>
-          <li><%= link_to 'Post your memories', new_post_path%></li>
-          <li> <%= link_to 'Mypage', mypage_path %></li>
-          <li> <%= link_to 'Search', users_path %></li>
-          <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to root_path do %>
+            Top
+            <% end %>
+          </li>
+          <li><%= link_to new_post_path do%>
+            Post your memories
+            <% end %>
+          </li>
+          <li> <%= link_to mypage_path do%>
+            Mypage
+            <% end %>
+          </li>
+          <li> <%= link_to users_path do%>
+            Search
+            <% end %>
+          </li>
+          <li> <%= link_to destroy_user_session_path, method: :delete do%>
+            Logout
+            <% end %>
+          </li>
         </ul>
       </div>
     </nav>

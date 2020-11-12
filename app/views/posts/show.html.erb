@@ -1,119 +1,162 @@
 <div class="content-wrapper">
-  <%= render 'layouts/header' %>
-
   <div class="post-content">
-
-    <h3><%= @post.start_time.strftime('%Y/%m/%d')%></h3>
-    <div class="text-content">
-      <p class="post-title">- <%= @post.title %> -</p>
-      <% @tag_list.each do |list| %>
-      <%= link_to list.tag_name,user_tag_path(user_id:current_user.id, id: list.id) %><br>
-      <% end %>
-      <%= @post.body %>
-    </div>
-
-    <div class="text-content">
-      <%= image_tag @post.image1_url %>
-      <%= image_tag @post.image2_url %>
-      <%= image_tag @post.image3_url %>
-    </div>sp
-    <% if @post.youtube_url.present? %>
-    <p>- あの頃の曲 -</p>
-    <iframe src="https://www.youtube.com/embed/<%= @post.youtube_url %>" frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </p>
-    <% end%>
-    <p>- 思い出の場所 -</p>
-    <%= @post.address%>
-
-
-    <div class="map-content">
-      <div class="row">
-        <div class="col-sm" id="map"></div>
-        <div class="col-sm" id="pano"></div>
+    <div class="show-wrapper">
+      <div class="post-top">
+        <div class="dayarea">
+          <div class="start"%>
+              <div class="post-day">
+                <div class="day-inner">
+                  <h5><%= @post.start_time.strftime('%Y/%m/%d')%> <h6>
+                  <h6><%= @post.title %></h6> 
+                </div>
+              </div>
+          </div>
+          <div class="end">
+            <h6 class="showtag genre <%= @post.genre%>">
+              <i class="fas fa-heart"></i> <%= @post.genre %>
+            </h6>
+            <h6 class="showtag local">
+              <i class="fas fa-heart"></i> <%= @post.address%>
+            </h6>
+          </div>
+        </div>
+        <% unless @post.image1.blank? %>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <%= image_tag @post.image1_url, class:"d-block w-100 showimg"%>
+              </div>
+              <% unless @post.image2.blank? %>
+                <div class="carousel-item">
+                  <%= image_tag @post.image2_url,class:"d-block w-100 showimg"%>
+                </div>
+              <% end %>
+              <% unless @post.image3.blank? %>%>
+                <div class="carousel-item">
+                  <%= image_tag @post.image3_url,class:"d-block w-100 showimg"%>
+                </div>
+              <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        <% end %>
       </div>
-      <script>
-        let map
-        let geocoder
+      <div class="post-middle">
+        <span class="bodycontents"><%= simple_format(h(@post.body))%></span>
+        <h6>
+        <% @tag_list.each do |list| %>
+          <%= link_to list.tag_name,user_tag_path(user_id:current_user.id, id: list.id), class:"tag-list" %>
+        <% end %>
+        </h6>
+      </div>
+      <div class="post-bottom">
+          <% if @post.youtube_url.present? %>
+          <iframe src="https://www.youtube.com/embed/<%= @post.youtube_url.last(11) %>" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </p>
+          <% end%>
 
-        function initMap() {
-          geocoder = new google.maps.Geocoder()
-          map = new google.maps.Map(
-            document.getElementById('map'), {
-              center: {
-                lat: <%= @latlng[0] %> ,
-                lng: <%= @latlng[1] %>
-              },
-              zoom: 15,
-            });
-          var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-              position: {
-                lat: <%= @latlng[0] %> ,
-                lng: <%= @latlng[1] %>
-              },
-              pov: {
-                heading: 34,
-                pitch: 10
-              }
-            });
+          <div class="map-content">
+            <div class="row">
+              <div class="col-sm-6" id="map"></div>
+              <div class="col-sm-6" id="pano"></div>
+            </div>
+            <script>
+              let map
+              let geocoder
 
-          marker = new google.maps.Marker({
-            position: {
-              lat: <%= @latlng[0] %>,
-              lng: <%= @latlng[1] %>
-            },
-            map: map
-          });
-        }
+              function initMap() {
+                geocoder = new google.maps.Geocoder()
+                map = new google.maps.Map(
+                  document.getElementById('map'), {
+                    center: {
+                      lat: <%= @latlng[0] %> ,
+                      lng: <%= @latlng[1] %>
+                    },
+                    zoom: 15,
+                  });
+                var panorama = new google.maps.StreetViewPanorama(
+                  document.getElementById('pano'), {
+                    position: {
+                      lat: <%= @latlng[0] %> ,
+                      lng: <%= @latlng[1] %>
+                    },
+                    pov: {
+                      heading: 34,
+                      pitch: 10
+                    }
+                  });
 
-        function toggleBounce() {
-          if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-          } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
-        }
-
-        function codeAddress() {
-          // 入力を取得
-          let inputAddress = document.getElementById('address').value;
-          // geocodingしたあとmapを移動
-          geocoder.geocode({
-              'address': inputAddress
-            },
-            function (results, status) {
-              if (status == 'OK') {
-                map.setCenter(results[0].geometry.location);
-                map.setZoom(17);
-                //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-                var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
+                marker = new google.maps.Marker({
+                  position: {
+                    lat: <%= @latlng[0] %>,
+                    lng: <%= @latlng[1] %>
+                  },
+                  map: map
                 });
-                map.setStreetView(panorama);
-                // var panorama = new google.maps.StreetViewPanorama(
-                //     document.getElementById('pano'),{
-                //     position: results[0].geometry.location,
-                //     draggable: true,
-                //     pov:{＋
-                //       heading: 34,
-                //       pitch: 10
-                //     } 
-                // });
-              } else {
-                alert('Geocode was not successful for the following reason:' + status);
               }
-            });
-        }
-      </script>
 
-      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+              function toggleBounce() {
+                if (marker.getAnimation() !== null) {
+                  marker.setAnimation(null);
+                } else {
+                  marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+              }
+
+              function codeAddress() {
+                // 入力を取得
+                let inputAddress = document.getElementById('address').value;
+                // geocodingしたあとmapを移動
+                geocoder.geocode({
+                    'address': inputAddress
+                  },
+                  function (results, status) {
+                    if (status == 'OK') {
+                      map.setCenter(results[0].geometry.location);
+                      map.setZoom(17);
+                      //google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+                      var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                      });
+                      map.setStreetView(panorama);
+                      // var panorama = new google.maps.StreetViewPanorama(
+                      //     document.getElementById('pano'),{
+                      //     position: results[0].geometry.location,
+                      //     draggable: true,
+                      //     pov:{＋
+                      //       heading: 34,
+                      //       pitch: 10
+                      //     } 
+                      // });
+                    } else {
+                      alert('Geocode was not successful for the following reason:' + status);
+                    }
+                  });
+              }
+            </script>
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+          </div>
+        
+        <div class="post-link">
+          <%= link_to "back", root_path ,class:"btn showbtn back" %>
+          <%= link_to "edit", edit_post_path(@post.id), class:"btn showbtn editbtn " %>
+          <%= link_to "destroy", post_path(@post.id), class:"btn showbtn destroy", method: :delete %>
+        </div>
     </div>
-  </div>
-  <div class="post-link">
-    <%= link_to "back", root_path ,class:"btn btn-outline-info" %>
-    <%= link_to "edit", edit_post_path(@post.id), class:"btn btn-info" %>
-    <%= link_to "destroy", post_path(@post.id), class:"btn btn-info", method: :delete %>
   </div>
 </div>

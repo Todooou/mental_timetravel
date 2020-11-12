@@ -13,7 +13,6 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id=current_user.id
     url = params[:post][:youtube_url]   
-        url = url.last(11)
         @post.youtube_url = url
     tag_list = params[:post][:tag_name].split(/[[:blank:]]+/).select(&:present?)
       if @post.save
@@ -53,7 +52,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :day, :youtube_url, :address, :latitude, :longitude, :user_id, :genre, :start_time)
+    params.require(:post).permit(:title, :body, :day, :youtube_url, :address, :latitude, :longitude, :user_id, :genre, :start_time, :image1,:image2,:image3)
   end
 
   def get_my_post

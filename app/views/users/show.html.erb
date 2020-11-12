@@ -2,32 +2,40 @@
   <div class="user-show-wrapper">
     <div class="index-content">
       <div class="user-info">
-        <div class="user-profile">
-          <%= link_to edit_user_registration_path(current_user), class: "hensyu" do%>
-          <%= image_tag @user.image_url, class:"icon_image"%>
-          <% end %>
+        <div class="name-wrapper">
+          <div class="user-profile">
+            <%= link_to edit_user_registration_path(current_user), class: "hensyu" do%>
+            <%= image_tag @user.image_url, class:"icon_image"%>
+            <% end %>
+          </div>
         </div>
-        <div class="user-button">
-          <%= @user.username %>
+        <div class="follow-wrapper">
+          <div class="user-name">
+            <h3><%= @user.username %></h3>
+          </div>
+          <div class="follow-count">
+            <div class="follow-corner">
+              <div class="count">
+                <h6>post</h6>
+              <h3><%= @post.count %></h3>
+              </div>
+              <div class="count">
+                <h6>follow</h6>
+                <h3><%= @followings %></h3>
+              </div>
+              <div class="count">
+                <h6>follower</h6>
+                <h3><%= @followers %></h3>
+              </div>
+            </div>
+            <div class="user-follow">
+              <% if user_signed_in? && @user == current_user %>
+              <% else %>
+              <%= render 'relationships/follow_button', user: @user %>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <div class="count">
-          <h6>post</h6>
-          <h2><%= @post.count %></h2>
-        </div>
-        <div class="count">
-          <h6>follow</h6>
-          <h2><%= @followings %></h2>
-        </div>
-        <div class="count">
-          <h6>follower</h6>
-          <h2><%= @followers %></h2>
-        </div>
-      </div>
-      <div class="user-follow">
-        <% if user_signed_in? && @user == current_user %>
-        <% else %>
-        <%= render 'relationships/follow_button', user: @user %>
-        <% end %>
       </div>
     </div>
     <% if @post %>
@@ -35,7 +43,7 @@
       <div class="each-post">
         <% @post.each do |t| %><br>
         <%= link_to post_path(t.id),class: "posts_day_link" do %>
-        <div class="row round <%= t.genre %>"%>
+        <div class="row round <%= t.genre %>1"%>
           <div class="post_txt">
             <h4><%= t.start_time.strftime('%Y/%m/%d') %></h4>
             <p class="title_txt"><%= t.title %></p>
