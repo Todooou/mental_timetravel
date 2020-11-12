@@ -152,11 +152,14 @@
             <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
           </div>
         
-        <div class="post-link">
-          <%= link_to "back", root_path ,class:"btn showbtn back" %>
-          <%= link_to "edit", edit_post_path(@post.id), class:"btn showbtn editbtn " %>
-          <%= link_to "destroy", post_path(@post.id), class:"btn showbtn destroy", method: :delete %>
-        </div>
+          <div class="post-link">
+            <%= link_to "back", :back ,class:"btn showbtn back" %>
+            <% if @post.user_id ==current_user.id %>
+              <%= link_to "edit", edit_post_path(@post.id), class:"btn showbtn editbtn " %>
+              <%= link_to "destroy", post_path(@post.id), class:"btn showbtn destroy", method: :delete %>
+            <% end %>
+          </div>
+        
     </div>
   </div>
 </div>
