@@ -1,24 +1,19 @@
-# READM
+# *✈Mental Timetravel*
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 🌐 App URL
+### **https://mentaltimetravel.herokuapp.com/**
 
-Things you may want to cover:
+## ⛴Description
+`Mental Timetravel` is a website to look back on your memories.
 
-* Ruby version
 
-* System dependencies
+### Features
+You can add music, maps and photos.
 
-* Configuration
 
-* Database creation
+## 💻Requirement
+- Ruby  2.6.2
+- Rails 6.0.3.3
+- Google Maps API
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
