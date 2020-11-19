@@ -218,6 +218,7 @@ a.profile {
   background-color: #f582ae;
 }
 
+
 .サークル・部活1 {
   background-color: #f3d2c1;
 }
@@ -256,6 +257,10 @@ a.profile {
   border-bottom: 1px solid #001858;
   height: 1000px;
   overflow: scroll;
+}
+
+div#events_calendar {
+  margin-bottom: 50px;
 }
 
 .user-follow {
@@ -422,8 +427,14 @@ input.btn.btn-primary.btn-block {
   .user-info {
     display: flex;
   }
+  .user-name {
+    margin: 10px 20px;
+  }
   .user-name h3 {
     font-size: 20px;
+  }
+  .user-show-wrapper h3 {
+    padding: 10px;
   }
   .follow-count h6{
     font-size: 15px;
@@ -463,10 +474,16 @@ input.btn.btn-primary.btn-block {
 
   /*show*/
   .wrapper {
-    width: 98%;
+    width: 100%;
   }
   .user-show-wrapper {
     width: 98%;
+  }
+  .user-name {
+    margin: 0 20px;
+  }
+  .user-name h3 {
+    padding: 5px;
   }
 
   .round {
@@ -497,7 +514,7 @@ input.btn.btn-primary.btn-block {
     font-size: 13px;
   }
   .count {
-    margin: 10px 15px;
+    margin: 5px 15px;
   }
   .followbtn {
     padding: 10px;
