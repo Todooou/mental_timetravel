@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:top]
-  before_action :get_my_post, only: [:show, :edit, :update, :destroy]
+  #before_action :get_my_post, only: [:show, :edit, :update, :destroy]
 
   def top
   end
@@ -24,10 +24,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    results = Geocoder.search(@post.address)
-    @latlng = results.first.coordinates
-    @tag_list = @post.tags
+      @post = Post.find(params[:id])
+      results = Geocoder.search(@post.address)
+      @latlng = results.first.coordinates
+      @tag_list = @post.tags
   end
 
   def edit
@@ -56,9 +56,9 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :day, :youtube_url, :address, :latitude, :longitude, :user_id, :genre, :start_time, :image1,:image2,:image3)
   end
 
-  def get_my_post
-    @post=current_user.posts.find_by(id: params[:id])
-    redirect_to :root unless @post
-  end
+  #def get_my_post
+    #@post=current_user.posts.find_by(id: params[:id])
+    #redirect_to :root unless @post
+  #end
 
 end

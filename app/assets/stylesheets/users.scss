@@ -133,9 +133,7 @@
   align-items: center;
   display: flex;
 }
-.user-follow {
-  
-}
+
 .followbtn{
   background-color: #F582AE;
   padding: 20px;
@@ -259,8 +257,22 @@ a.profile {
   overflow: scroll;
 }
 
+.user-nonfollow-post {
+  margin: 0 auto 80px;
+  padding: 70px 0;
+  border-top: 1px solid #001858;
+  border-bottom: 1px solid #001858;
+  height: 200px; 
+  margin: 0 auto; 
+  text-align: center;
+  .fa-lock {
+    font-size: 50px;
+    color: #001858;
+  }
+}
+
 div#events_calendar {
-  margin-bottom: 50px;
+  margin-bottom: 300px;
 }
 
 .user-follow {

@@ -6,9 +6,10 @@ class UsersController < ApplicationController
     #if @user.id ==current_user.id
     @post = @user.posts.all.order(start_time: :desc)
     #end
-
-    @followers = @user.followers.count
-    @followings = @user.followings.count
+    @followers = @user.followers.ids
+    @followers_id = @followers.count
+    @followings = @user.followings.ids
+    @followings_id = @followings.count
 
   end
 
