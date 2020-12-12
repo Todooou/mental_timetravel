@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <p class="post_title">User all</p>
+  <p class="post_title">Followers</p>
   <div class="index-content">
 
     <% @users.each do |user| %>
@@ -7,8 +7,9 @@
       <div><%= link_to user_path(user.id) do %>
       <%= image_tag user.image_url, class:"icon" %></div> 
       <div class="username"><%= user.username%></div>
+      
       <% end %>
     </div>
   <% end %>
-  </div>
+  <%= link_to "back", :back ,class:"btn showbtn back" %>
 </div>

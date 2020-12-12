@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   #before_action :get_my_post, only: [:show, :edit, :update, :destroy]
-  #before action :each_follow, except: [:new, :top]
 
   def top
   end
@@ -31,7 +30,7 @@ class PostsController < ApplicationController
       @tag_list = @post.tags
       followers = current_user.followers.ids 
       followings = current_user.followings.ids
-      unless followers.include?(@post.user.id) && followings.include?(@post.user.id) or @post.user_id == current_user.id
+      unless followers.include?(@post.user.id) && followings.include?(@post.user.id) || @post.user_id == current_user.id  
           redirect_back(fallback_location: root_path)
       end
   end

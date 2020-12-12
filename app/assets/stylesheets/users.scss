@@ -90,9 +90,13 @@
 .user-show-wrapper {
   width: 95%;
   margin: auto;
-}
-.user-show-wrapper h3 {
+  h3 {
   padding: 30px;
+  color: #001858;
+    &:hover{
+      text-decoration: none;
+    }
+  }
 }
 .profile {
   font-size: 15px;

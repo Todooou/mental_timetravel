@@ -22,11 +22,15 @@
                 </div>
                 <div class="count">
                   <h6>follow</h6>
+                  <%= link_to followings_path(@user.id) do %>
                   <h3><%= @followings_id %></h3>
+                  <% end %>
                 </div>
                 <div class="count">
                   <h6>follower</h6>
+                  <%= link_to followers_path(@user.id) do %>
                   <h3><%= @followers_id %></h3>
+                  <% end %>
                 </div>
               </div>
               <div class="user-follow">
