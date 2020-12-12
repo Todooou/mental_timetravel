@@ -31,7 +31,7 @@ class PostsController < ApplicationController
       @tag_list = @post.tags
       followers = current_user.followers.ids 
       followings = current_user.followings.ids
-      unless followers.include?(@post.user.id)&& followings.include?(@post.user.id)
+      unless followers.include?(@post.user.id) && followings.include?(@post.user.id) or @post.user_id == current_user.id
           redirect_back(fallback_location: root_path)
       end
   end
