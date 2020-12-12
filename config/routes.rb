@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :posts, except: [:index]
   resources :relationships, only: [:create, :destroy]
+  resources :tags, only: [:show]
   resources :users, only: [:index, :show, :edit, :update] do
-    resources :tags, only: [:show]
   end
   get "users/:id/followers" => "users#followers" ,as: :followers
   get "users/:id/followings" => "users#followings" ,as: :followings 

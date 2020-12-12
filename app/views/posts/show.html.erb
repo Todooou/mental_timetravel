@@ -57,7 +57,7 @@
         <span class="bodycontents"><%= simple_format(h(@post.body))%></span>
         <h6>
         <% @tag_list.each do |list| %>
-          <%= link_to list.tag_name,user_tag_path(user_id:current_user.id, id: list.id), class:"tag-list" %>
+          <%= link_to list.tag_name,tag_path(list.id), class:"tag-list" %>
         <% end %>
         </h6>
       </div>
