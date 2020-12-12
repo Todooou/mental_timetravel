@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   #before_action :get_my_post, only: [:show, :edit, :update, :destroy]
+  #before action :each_follow, except: [:new, :top]
 
   def top
   end
@@ -28,6 +29,11 @@ class PostsController < ApplicationController
       results = Geocoder.search(@post.address)
       @latlng = results.first.coordinates
       @tag_list = @post.tags
+      followers = current_user.followers.ids 
+      followings = current_user.followings.ids
+      unless followers.include?(@post.user.id )&& followings.include?(@post.user.id)
+          redirect_back(fallback_location: root_path)
+      end
   end
 
   def edit
@@ -52,6 +58,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :body, :day, :youtube_url, :address, :latitude, :longitude, :user_id, :genre, :start_time, :image1,:image2,:image3)
   end
@@ -60,5 +67,7 @@ class PostsController < ApplicationController
     #@post=current_user.posts.find_by(id: params[:id])
     #redirect_to :root unless @post
   #end
+
+
 
 end
