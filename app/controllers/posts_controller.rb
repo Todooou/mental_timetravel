@@ -57,7 +57,6 @@ class PostsController < ApplicationController
   end
 
   private
-
   def post_params
     params.require(:post).permit(:title, :body, :day, :youtube_url, :address, :latitude, :longitude, :user_id, :genre, :start_time, :image1,:image2,:image3)
   end
